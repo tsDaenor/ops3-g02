@@ -5,7 +5,7 @@
 | Naam     | GitHub gebruikersnaam                   |
 | :---     | :---                                    |
 | Tomas Vercautter | [tsDaenor](https://github.com/tsDaenor) |
-| student2 | [student2](https://github.com/student2) |
+| Bram Martens | [BramMartens](https://github.com/BramMartens) |
 | student3 | [student3](https://github.com/student3) |
 | student4 | [student4](https://github.com/student4) |
 
