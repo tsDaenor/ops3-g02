@@ -6,7 +6,7 @@
 | :---     | :---                                    |
 | Tomas Vercautter | [tsDaenor](https://github.com/tsDaenor) |
 | Bram Martens | [BramMartens](https://github.com/BramMartens) |
-| student3 | [student3](https://github.com/student3) |
+| Dennis Verfaillie | [iDenniZz](https://github.com/iDenniZz) |
 | student4 | [student4](https://github.com/student4) |
 
 ## Gebruikte tools
