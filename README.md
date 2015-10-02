@@ -7,7 +7,7 @@
 | Tomas Vercautter | [tsDaenor](https://github.com/tsDaenor) |
 | Bram Martens | [BramMartens](https://github.com/BramMartens) |
 | Dennis Verfaillie | [iDenniZz](https://github.com/iDenniZz) |
-| student4 | [student4](https://github.com/student4) |
+| Toon Lamberigts | [encron](https://github.com/encron) |
 
 ## Gebruikte tools
 
