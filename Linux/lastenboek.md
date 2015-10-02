@@ -1,7 +1,7 @@
 ## Lastenboek Taak 1: (titel)
 
-* Verantwoordelijke uitvoering: `studentx`
-* Verantwoordelijke testen: `studenty`
+* Verantwoordelijke uitvoering: `Tomas Vercautter`, `Toon Lamberigts`, `Dennis Verfaillie`, `Bram Martens`
+* Verantwoordelijke testen: `Tomas Vercautter`, `Toon Lamberigts`, `Dennis Verfaillie`, `Bram Martens`
 
 ### Deliverables
 
