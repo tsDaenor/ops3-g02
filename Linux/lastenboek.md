@@ -13,9 +13,9 @@
 
 ### Deeltaken
 
-##### simple lamp
+##### Simple LAMP
 
-* lamp stack
+* LAMP stack
   - php-applicatie
   - databank
 * monitoring server
@@ -32,7 +32,7 @@
   - commentaar
   - slashdot effect
 
-##### multi-tier webserver
+##### Multi-tier webserver
 
 * apache vervangen
   - vagrant + ansible
