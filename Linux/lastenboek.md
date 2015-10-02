@@ -1,4 +1,4 @@
-## Lastenboek Taak 1: (titel)
+## Lastenboek Taak 1: Linux
 
 * Verantwoordelijke uitvoering: `Tomas Vercautter`, `Toon Lamberigts`, `Dennis Verfaillie`, `Bram Martens`
 * Verantwoordelijke testen: `Tomas Vercautter`, `Toon Lamberigts`, `Dennis Verfaillie`, `Bram Martens`
