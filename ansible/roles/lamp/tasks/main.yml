@@ -1,0 +1,192 @@
+#####################################
+#                                   #
+#               LAMP                #
+#                                   #
+#####################################
+# roles/lamp/tasks/main.yml
+---
+########## Install apache2
+- name: 1. install Apache
+  yum: name=httpd state=present
+
+- name: 3. start Apache
+  service: name=httpd state=running enabled=yes
+
+- name: 4. install Hello World PHP script
+  copy: src=index.php dest=/var/www/html/index.php mode=0664
+
+- name: install php 
+  yum: name=php state=present
+  
+- name: 6. Install Mod SSL
+  yum: name=mod_ssl state=present  
+
+- stat: path="/etc/pki/tls/certs/server.key"
+  register: key  
+- stat: path="/etc/pki/tls/certs/server.crt"
+  register: cert
+  
+- name: 7. Create key/cert if not existing
+  command: 'openssl req -new -nodes -x509 -subj "/C=BE/O=ToonCorp" -days 365 -x509 -nodes -out /etc/pki/tls/certs/server.crt -keyout /etc/pki/tls/private/server.key'
+  when: (key.stat.exists == False) or (cert.stat.exists == False)
+  notify: restart httpd
+  
+- name: 8. Install main configuration file
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    setype: httpd_config_t
+    mode: '0644'
+  notify: restart httpd
+  tags: httpd
+
+- name: 9. Install mod_ssl configuration file
+  template:
+    src: ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    setype: httpd_config_t
+    mode: '0644'
+  notify: restart httpd
+  tags: httpd  
+  
+########### Install MariaDB
+
+- name: Install packages
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items: mariadb_packages
+  tags: mariadb
+
+- name: Ensure service is started
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+  tags: mariadb
+
+- name: Install config file for network settings
+  template:
+    src: etc_my.cnf.d_network.cnf.j2
+    dest: /etc/my.cnf.d/network.cnf
+  notify: restart mariadb
+  tags: mariadb
+
+
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ lamp_root_password }}"
+    state: present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+  tags: mariadb
+
+- name: Install ~/.my.cnf
+  template:
+    src: home_my.cnf.j2
+    dest: ~/.my.cnf
+    mode: '0600'
+  tags: mariadb
+
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ ansible_hostname }}"
+    password: "{{ lamp_root_password }}"
+    state: present
+  when: ansible_hostname != 'localhost'
+  tags: mariadb
+
+- name: Remove the test database
+  mysql_db:
+    name: test
+    state: absent
+  tags: mariadb
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - localhost
+    - "{{ ansible_hostname }}"
+  tags: mariadb
+
+- name: Create the databases
+  mysql_db:
+    name: "{{ item }}"
+    state: present
+  with_items: lamp_databases
+  tags: mariadb
+
+- name: Create the users
+  mysql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.priv }}"
+    state: present
+  with_items: lamp_users
+  tags: mariadb
+
+- name: Copy database init scripts
+  copy:
+    src: "{{ item.script }}"
+    dest: "/tmp/{{ item.script|basename }}"
+  with_items: lamp_init_scripts
+  when: lamp_init_scripts is defined
+  tags: mariadb
+
+- name: Initialise databases
+  mysql_db:
+    name: "{{ item.database }}"
+    state: import
+    target: "/tmp/{{ item.script|basename }}"
+  with_items: lamp_init_scripts
+  when: lamp_init_scripts is defined
+  tags: mariadb
+
+########### Install WordPress
+
+- name: 1. Install WordPress Package
+  yum: name=wordpress state=present  
+  
+- name: 2. Apache config file for Wordpress
+  copy:
+    src=wordpress.conf
+    dest=/etc/httpd/conf.d/wordpress.conf
+    owner=root
+    group=root
+    mode=0644
+    setype=httpd_config_t
+  notify: restart httpd
+  tags: wordpress
+
+- name: 3. Get Salts
+  command: curl https://api.wordpress.org/secret-key/1.1/salt/
+  register: wordpress_salt
+  tags: wordpress
+
+- name: 4. Wordpress config file
+  template:
+    src=wp-config.php.j2
+    dest=/etc/wordpress/wp-config.php
+    owner=root
+    group=apache
+    mode=0640
+    setype=etc_t
+  notify: restart httpd
+  tags: wordpress 
+  
+- name: add interface to zone public
+  script: ../files/firewall.sh
+  notify: restart firewalld
+  

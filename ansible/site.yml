@@ -1,0 +1,8 @@
+# site.yml
+---
+- hosts: pu004
+  sudo: yes
+  roles:
+    - bertvv.el7
+    - lamp
+
