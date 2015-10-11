@@ -14,9 +14,6 @@
       - name: wp_user
         password: CorkIgWac
         priv: "wp_db.*:ALL,GRANT"
-    lamp_init_scripts:
-      - database: wp_db
-        script: roles/lamp/files/init.sql
     wordpress_database: wp_db
     wordpress_user: wp_user
     wordpress_password: CorkIgWac
