@@ -1,8 +1,36 @@
 # site.yml
 ---
-- hosts: pu004
+- hosts: linuxlamp
   sudo: yes
   roles:
     - bertvv.el7
     - lamp
+    - wordpress
+  vars:
+    lamp_databases:
+      - wp_db
+    lamp_root_password: fogMeHud8
+    lamp_users:
+      - name: wp_user
+        password: CorkIgWac
+        priv: "wp_db.*:ALL,GRANT"
+    lamp_init_scripts:
+      - database: wp_db
+        script: roles/lamp/files/init.sql
+    wordpress_database: wp_db
+    wordpress_user: wp_user
+    wordpress_password: CorkIgWac
+    wordpress_home_url: 192.0.3.50
+    wordpress_site_title: Test Site
+    wordpress_admin_user: admin
+    wordpress_admin_user_pass: admin
+    wordpress_admin_email: toon.lamberigts@gmail.com
+    remote_wordpress_dir: /usr/share/wordpress
+    remote_deploy_user: vagrant
+    mariadb_packages:
+      - mariadb
+      - mariadb-server
+      - MySQL-python
+
+ 
 

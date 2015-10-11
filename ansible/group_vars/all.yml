@@ -11,10 +11,10 @@ el7_install_packages:
   - wget
 el7_repositories:
   - epel-release
-el7_admin_user: tomas
+el7_admin_user: Administrator
 el7_admin_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQMkkr9fcpgT1kvi4oFk5/YkN8v76HuiJP9L9DGHPbCqnTtjGoKDuM+6iVI0C/TGpNqXVlJL3Xdi1Sjh3sIfaRVord5H5/bsj5lJsMZo8gwzVpCD/wEvxX69ppgE6B9wu0cxKZakcHFHd8LssiuppSidMItDdYa/9m93OmEDeEodYkJ18/YLzF5FUNHa0rpjO7hEidfbmzr1kArq8tQ89D/8onmFOyb2p7joHXpeYpJUDqiNnXeNJQ+Oi02GbEJQloi3Xna6lUvud+4Gwn7hVllcFqtxlpYCq2A9SClmNwHxHB85OF25vdeDIMVViXgTa660OeKJaKk475qnEO/g+N'
 el7_users:
-  - name: tomas
+  - name: Administrator
     comment: Administrator
     groups: 
       - "wheel"
@@ -23,18 +23,3 @@ el7_firewall_allow_services:
   - http
   - https
 el7_motd: true
-
-lamp_databases:
-  - wp_db
-lamp_root_password: fogMeHud8
-lamp_users:
-  - name: wp_user
-    password: CorkIgWac
-    priv: "wp_db.*:ALL,GRANT"
-lamp_init_scripts:
-  - database: wp_db
-    script: init.sql
-
-wordpress_database: wp_db
-wordpress_user: wp_user
-wordpress_password: CorkIgWac
