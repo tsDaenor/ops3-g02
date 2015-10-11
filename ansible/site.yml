@@ -17,7 +17,7 @@
     wordpress_database: wp_db
     wordpress_user: wp_user
     wordpress_password: CorkIgWac
-    wordpress_home_url: 192.0.3.50
+    wordpress_home_url: "http://192.0.3.50/wordpress"
     wordpress_site_title: Test Site
     wordpress_admin_user: admin
     wordpress_admin_user_pass: admin

@@ -78,7 +78,13 @@
   register: wordpress_salt
   tags: wordpress
 
+- name: Check if table is empty
+  shell: /usr/bin/mysql --batch --skip-column-names --execute="select count(*) from wp_posts" wp_db
+  register: table_is_empty
+  sudo: True
+  
 - name: Generate 1000 posts with Lorem Ipsum content
   shell: curl http://loripsum.net/api/5 | /usr/local/bin/wp post generate --post_content --count=1000
   args:
     chdir: "{{ remote_wordpress_dir }}"  
+  when: table_is_empty.stdout == "2"
