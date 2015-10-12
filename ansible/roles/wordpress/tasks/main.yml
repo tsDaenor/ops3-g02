@@ -51,6 +51,13 @@
            --dbpass="{{ wordpress_password }}"
   when: wordpress_is_downloaded.stat.exists == False
   remote_user: "{{ remote_deploy_user }}"
+
+- name: Is WordPress installed?
+  shell: /usr/local/bin/wp core is-installed
+  args:
+    chdir: "{{ remote_wordpress_dir }}/"
+  register: wordpress_is_installed
+  ignore_errors: True  
   
 - name: Install WordPress tables
   sudo: yes
@@ -61,7 +68,8 @@
             --admin_user="{{ wordpress_admin_user }}"
             --admin_password="{{ wordpress_admin_user_pass }}"
             --admin_email="{{ wordpress_admin_email }}"
-
+  when: wordpress_is_installed|failed
+  
 - name: Apache config file for Wordpress
   copy:
     src=wordpress.conf
