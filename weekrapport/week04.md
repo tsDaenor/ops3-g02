@@ -85,6 +85,8 @@
       * Enkel begeleiders markeren als Done. Evt. in kolom "Ready for testing" markeren als "Ready for next stage"
       * Nog niets voor Windows gedaan? Enkel één taak "Powershell boek lezen" . Elk teamlid moet een boek lezen, dus voor elk teamlid een taak (met vermelding titel!)
 
+Verwerk nieuwe issues en die door mij op "Blocked" gezet.
+
 ### Student 1
 ### Student 2
 ### Student 3
