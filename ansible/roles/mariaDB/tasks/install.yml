@@ -1,0 +1,20 @@
+#####################################
+#                                   #
+#               Install             #
+#                                   #
+#####################################
+# roles/mariaDB/tasks/install.yml
+
+
+
+
+- name: Install packages
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+    - mariadb
+    - mariadb-server
+    - MySQL-python
+  tags: mariadb
+  

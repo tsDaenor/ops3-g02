@@ -1,41 +1,18 @@
 #####################################
 #                                   #
-#               LAMP                #
+#              Config               #
 #                                   #
 #####################################
-# roles/lamp/tasks/main.yml
----
-  
-########### Install MariaDB
+# roles/mariaDB/tasks/config.yml
 
-- name: Install packages
-  yum:
-    pkg: "{{ item }}"
-    state: installed
-  with_items: mariadb_packages
-  tags: mariadb
-  
-- name: Make sure the MySQL extension for PHP is installed
-  yum: 
-    pkg: php-mysql
-    state: installed
-  notify: restart httpd
-  
-- name: Ensure service is started
-  service:
-    name: mariadb
-    state: started
-    enabled: yes
-  tags: mariadb
+
 
 - name: Install config file for network settings
   template:
     src: etc_my.cnf.d_network.cnf.j2
     dest: /etc/my.cnf.d/network.cnf
   notify: restart mariadb
-  tags: mariadb
-
-
+  
 - name: Update root password
   mysql_user:
     name: root
@@ -46,14 +23,12 @@
     - 127.0.0.1
     - ::1
     - localhost
-  tags: mariadb
 
 - name: Install ~/.my.cnf
   template:
     src: home_my.cnf.j2
     dest: ~/.my.cnf
     mode: '0600'
-  tags: mariadb
 
 - name: Update root password
   mysql_user:
@@ -62,13 +37,11 @@
     password: "{{ lamp_root_password }}"
     state: present
   when: ansible_hostname != 'localhost'
-  tags: mariadb
 
 - name: Remove the test database
   mysql_db:
     name: test
     state: absent
-  tags: mariadb
 
 - name: Remove anonymous users
   mysql_user:
@@ -78,14 +51,12 @@
   with_items:
     - localhost
     - "{{ ansible_hostname }}"
-  tags: mariadb
 
 - name: Create the databases
   mysql_db:
     name: "{{ item }}"
     state: present
   with_items: lamp_databases
-  tags: mariadb
 
 - name: Create the users
   mysql_user:
@@ -94,12 +65,3 @@
     priv: "{{ item.priv }}"
     state: present
   with_items: lamp_users
-  tags: mariadb
-
-
-
-
-########### Configure Firewall
-
-- name: Configure firewall
-  script: ../files/firewall.sh
