@@ -1,8 +1,8 @@
 ## Handleiding: Simple LAMP stack
 
-Deze handleiding stelt u in staat om, vertrekkende van deze repository, zelf een 'Simple LAMP stack' op te zetten.
-De VM bevat Centos 7 met Apache, MariaDb en Wordpress.
-Daarbij zal Wordpress al volledig geconfigureerd zijn met 1000 default posts. 
+Deze handleiding stelt u in staat om, vertrekkende van deze repository, zelf een 'Simple LAMP stack' op te zetten.  
+De VM bevat Centos 7 met Apache, MariaDb en Wordpress.  
+Daarbij zal Wordpress al volledig geconfigureerd zijn met 1000 default posts.  
 Deze is toegankelijk via: 192.0.3.50/wordpress
 
 ### Vereisten:
