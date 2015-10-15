@@ -21,3 +21,12 @@ Voer daarna volgend commando uit om de repository lokaal te clonen.
 ```ShellSession
 $ git clone --config core.autocrlf=false https://github.com/HoGentTIN/ops3-g02.git
 ```
+
+##### 2. De VM opstarten met Vagrant
+
+Wanneer de repository succesvol lokaal gekloond is, kan u met Vagrant de virtuele machine opstarten.
+Dit doet u met behulp van volgend commando:
+
+```ShellSession
+$ vagrant up
+```
