@@ -1,7 +1,0 @@
-# roles/www/handlers/main.yml
----
-
-- name: restart mariadb
-  service:
-    name: mariadb
-    state: restarted
