@@ -9,7 +9,7 @@ Deze is toegankelijk via: 192.0.3.50/wordpress
 
 Om deze LAMP werkomgeving op te zetten, heeft u volgende software nodig:
 * [Git](https://git-scm.com/downloads)
-* [Virtualbox + extension pack](https://www.virtualbox.org/wiki/Downloads/)
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads/)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Ansible](http://docs.ansible.com/intro_installation.html)
 
