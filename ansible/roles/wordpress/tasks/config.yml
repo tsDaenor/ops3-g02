@@ -46,6 +46,32 @@
   notify: restart httpd
   tags: wordpress
   
+- name: Download Salts
+  get_url:
+    url: https://api.wordpress.org/secret-key/1.1/salt/
+    dest: "{{ remote_wordpress_dir }}/wp-salts.php"
+    seuser: system_u
+    setype: httpd_sys_script_exec_t
+    force: no
+  notify: restart httpd
+  
+- name: Insert PHP start tag in Salts file
+  lineinfile:
+    dest: "{{ remote_wordpress_dir }}/wp-salts.php"
+    line: '<?php'
+    state: present
+    insertbefore: BOF
+  notify: restart httpd
+
+
+- name: Insert PHP end tag in Salts file
+  lineinfile:
+    dest: "{{ remote_wordpress_dir }}/wp-salts.php"
+    line: '?>'
+    state: present
+    insertafter: EOF
+  notify: restart httpd
+  
 - name: Check if table is empty
   shell: /usr/bin/mysql --batch --skip-column-names --execute="select count(*) from wp_posts" wp_db
   register: table_is_empty
