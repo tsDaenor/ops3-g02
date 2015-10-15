@@ -1,0 +1,12 @@
+#####################################
+#                                   #
+#              Services             #
+#                                   #
+#####################################
+# roles/www/tasks/services.yml
+
+
+
+
+- name: Starting Apache
+  service: name=httpd state=running enabled=yes

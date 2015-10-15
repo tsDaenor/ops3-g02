@@ -5,56 +5,6 @@
 #####################################
 # roles/lamp/tasks/main.yml
 ---
-########## Install apache2
-- name: 1. install Apache
-  yum: name=httpd state=present
-
-- name: 3. start Apache
-  service: name=httpd state=running enabled=yes
-
-- name: 4. install Hello World PHP script
-  copy: src=index.php dest=/var/www/html/index.php mode=0664
-
-- name: install php 
-  yum: name=php state=present
-  
-- name: 6. Install Mod SSL
-  yum: name=mod_ssl state=present  
-
-- name: 7. Is there an existing key?
-  stat: path="/etc/pki/tls/certs/server.key"
-  register: key  
-  
-- name: 8. Is there an existing certificate? 
-  stat: path="/etc/pki/tls/certs/server.crt"
-  register: cert
-  
-- name: 8. Create key/cert if not existing
-  command: 'openssl req -new -nodes -x509 -subj "/C=BE/O=ToonCorp" -days 365 -x509 -nodes -out /etc/pki/tls/certs/server.crt -keyout /etc/pki/tls/private/server.key'
-  when: (key.stat.exists == False) or (cert.stat.exists == False)
-  notify: restart httpd
-  
-- name: 9. Install main configuration file
-  template:
-    src: httpd.conf.j2
-    dest: /etc/httpd/conf/httpd.conf
-    owner: root
-    group: root
-    setype: httpd_config_t
-    mode: '0644'
-  notify: restart httpd
-  tags: httpd
-
-- name: 10. Install mod_ssl configuration file
-  template:
-    src: ssl.conf.j2
-    dest: /etc/httpd/conf.d/ssl.conf
-    owner: root
-    group: root
-    setype: httpd_config_t
-    mode: '0644'
-  notify: restart httpd
-  tags: httpd  
   
 ########### Install MariaDB
 

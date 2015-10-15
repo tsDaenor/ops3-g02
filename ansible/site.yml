@@ -4,6 +4,7 @@
   sudo: yes
   roles:
     - bertvv.el7
+    - www
     - lamp
     - wordpress
   vars:

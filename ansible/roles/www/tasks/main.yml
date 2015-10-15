@@ -1,0 +1,12 @@
+#####################################
+#                                   #
+#                WWW                #
+#                                   #
+#####################################
+# roles/www/tasks/main.yml
+
+###### Tasks
+- include: install.yml     # Install Apache and php
+- include: services.yml    # Start required services
+- include: certificate.yml # Create required file for https certificate
+- include: config.yml      # Configuration files
