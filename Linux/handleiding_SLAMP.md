@@ -5,7 +5,7 @@ De VM bevat Centos 7 met Apache, MariaDb en Wordpress.
 Daarbij zal Wordpress al volledig geconfigureerd zijn met 1000 default posts. 
 Deze is toegankelijk via: 192.0.3.50/wordpress
 
-#### Vereisten:
+### Vereisten:
 
 Om deze LAMP werkomgeving op te zetten, heeft u volgende software nodig:
 * [Git](https://git-scm.com/downloads)
@@ -13,9 +13,9 @@ Om deze LAMP werkomgeving op te zetten, heeft u volgende software nodig:
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Ansible](http://docs.ansible.com/intro_installation.html)
 
-#### Installatie:
+### Installatie:
 
-##### 1. Clonen van repository.
+#### 1. Clonen van repository.
 
 Open Git Bash en ga naar de gewenste directory.
 Voer daarna volgend commando uit om de repository lokaal te clonen.
@@ -24,7 +24,7 @@ Voer daarna volgend commando uit om de repository lokaal te clonen.
 $ git clone --config core.autocrlf=false https://github.com/HoGentTIN/ops3-g02.git
 ```
 
-##### 2. De VM opstarten met Vagrant
+#### 2. De VM opstarten met Vagrant
 
 Wanneer de repository succesvol lokaal gekloond is, kan u met Vagrant de virtuele machine opstarten.
 Dit doet u met behulp van volgend commando:
@@ -33,7 +33,7 @@ Dit doet u met behulp van volgend commando:
 $ vagrant up
 ```
 
-##### 3. Persoonlijke configuratie
+#### 3. Persoonlijke configuratie
 
 Configuratie van de Database:
 
