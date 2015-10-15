@@ -1,0 +1,10 @@
+#####################################
+#                                   #
+#               Wordpress           #
+#                                   #
+#####################################
+# roles/wordpress/tasks/main.yml
+
+###### Tasks
+- include: install.yml     # Install packages
+- include: config.yml      # Configuration files

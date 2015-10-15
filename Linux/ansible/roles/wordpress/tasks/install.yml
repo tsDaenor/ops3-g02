@@ -1,0 +1,51 @@
+#####################################
+#                                   #
+#               Install             #
+#                                   #
+#####################################
+# roles/wordpress/tasks/install.yml
+
+
+
+
+- name: Make sure the MySQL extension for PHP is installed
+  yum: 
+    pkg: php-mysql
+    state: installed
+  notify: restart httpd
+
+- name: Create WordPress directory
+  action: file
+  args:
+    path: "{{ remote_wordpress_dir }}"
+    mode: 0755
+    state: directory
+
+- name: Is WP-CLI downloaded?
+  stat: path="/usr/local/bin/wp"
+  register: wpcli_is_downloaded
+
+- name: Download WP-CLI
+  shell: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  when: wpcli_is_downloaded.stat.exists == False
+ 
+- name: Make WP-CLI executable
+  file:
+    path: wp-cli.phar
+    mode: u=rwx,g=rx,o=rx
+  when: wpcli_is_downloaded.stat.exists == False
+ 
+- name: Move WP-CLI to /usr/local/bin/wp
+  shell: mv wp-cli.phar /usr/local/bin/wp
+  when: wpcli_is_downloaded.stat.exists == False
+
+- name: Is WordPress downloaded?
+  stat: path="{{ remote_wordpress_dir }}/index.php"
+  register: wordpress_is_downloaded
+
+- name: Download WordPress
+  shell: /usr/local/bin/wp core download
+  args:
+    chdir: "{{ remote_wordpress_dir }}"
+  when: wordpress_is_downloaded.stat.exists == False
+  
