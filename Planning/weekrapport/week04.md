@@ -1,57 +1,57 @@
-# Voortgangsrapport week nn
+# Voortgangsrapport week 04
 
-* Groep:
-* Datum:
+* Groep:02
+* Datum: 16/10/15
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| student1 |       |           |
-| student2 |       |           |
-| student3 |       |           |
-| student4 |       |           |
+| Bram Martens |       |           |
+| Dennis Verfaillie |       |           |
+| Tomas Vercautter |       |           |
+| Toon Lamberigts |       |           |
 
 ## Wat heb je deze week gerealiseerd?
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
+####Huboard
 
-* ...
-* ...
+![alt Huboard](images/huboard/week04.png)
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+####Burndown
 
-### Student 1
+#####chart
+![alt burndownChart](images/week04/burndown/chart.png)
 
-* ...
+#####data
+![alt burndownChart](images/week04/burndown/tasks.png)
+####Toggle
 
-[Afbeelding individueel rapport tijdregistratie]
+![alt tasks](images/week04/tasks.png)
 
-### Student 2
+### Bram Martens
 
-* ...
+![alt Bram](images/week04/bram.png)
 
-[Afbeelding individueel rapport tijdregistratie]
+### Dennis Verfaillie
 
-### Student 3
+![alt Dennis](images/week04/dennis.png)
 
-* ...
+### Tomas Vercautter
 
-[Afbeelding individueel rapport tijdregistratie]
+![alt Tomas](images/week04/tomas.png)
 
-### Student 4
+### Toon Lamberigts
 
-* ...
-
-[Afbeelding individueel rapport tijdregistratie]
+![alt Toon](images/week04/toon.png)
 
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Bram Martens
+### Dennis Verfaillie
+### Tomas Vercautter
+### Toon Lamberigts
 
 ## Waar hebben jullie nog problemen mee?
 
@@ -87,8 +87,9 @@
 
 Verwerk nieuwe issues en die door mij op "Blocked" gezet.
 
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Algemeen
+### Bram Martens
+### Dennis Verfaillie
+### Tomas Vercautter
+### Toon Lamberigts
 
