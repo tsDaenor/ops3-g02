@@ -35,7 +35,7 @@ Deze handleiding stelt u in staat om zelf een Windows 2012 Server via powershell
   ```
   
   - Set the server name
-  `Rename-Computer -NewName trey-dc-02 -Restart -Force -PassThru`
+  `Rename-Computer -NewName PFSV1 -Restart -Force -PassThru`
 
   - Install Active Directory Domain Services
   `Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools`
