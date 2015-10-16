@@ -16,18 +16,18 @@
 
 ####Huboard
 
-![alt Huboard](images/huboard/week04.png)
+![alt Huboard](images/huboard/week04.PNG)
 
 ####Burndown
 
 #####chart
-![alt burndownChart](images/week04/burndown/chart.png)
+![alt burndownChart](images/week04/burndown/chart.PNG)
 
 #####data
-![alt burndownChart](images/week04/burndown/tasks.png)
+![alt burndowntasks](images/week04/burndown/tasks.PNG)
 ####Toggle
 
-![alt tasks](images/week04/tasks.png)
+![alt tasks](images/week04/tasks.PNG)
 
 ### Bram Martens
 
@@ -35,15 +35,15 @@
 
 ### Dennis Verfaillie
 
-![alt Dennis](images/week04/dennis.png)
+![alt Dennis](images/week04/dennis.PNG)
 
 ### Tomas Vercautter
 
-![alt Tomas](images/week04/tomas.png)
+![alt Tomas](images/week04/tomas.PNG)
 
 ### Toon Lamberigts
 
-![alt Toon](images/week04/toon.png)
+![alt Toon](images/week04/toon.PNG)
 
 ## Wat plan je volgende week te doen?
 
