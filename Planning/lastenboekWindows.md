@@ -13,6 +13,11 @@
 
 ### Deeltaken
 
+##### Installeer Windows Server 2012 (core)
+* Kies voor Windows Server 2012 (core) installatie (zonder gui)
+* Maak administrator account aan metje eigen wachtwoord
+* Kies de toetsenbordindeling
+
 ##### Basisinstellingen
 
 * Deploying forest
