@@ -49,14 +49,19 @@
 
 ### Algemeen
 ### Bram Martens
-### Dennis Verfaillie
+* afwerken sprint 1 (tegen zondag)
+
+### Dennis Verfaillie 
+* afwerken sprint 1 (tegen zondag)
+
 ### Tomas Vercautter
+* afwerken sprint 1 (tegen zondag)
+* opdelen sprint 2
+
 ### Toon Lamberigts
+* afwerken sprint 1 (tegen zondag)
 
 ## Waar hebben jullie nog problemen mee?
-
-* ...
-* ...
 
 ## Feedback technisch luik
 
