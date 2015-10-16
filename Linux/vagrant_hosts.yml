@@ -28,3 +28,6 @@
 
 - name: linuxLAMP
   ip: 192.0.3.50
+  
+- name: monitoring
+  ip: 192.0.3.51

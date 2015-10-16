@@ -8,10 +8,10 @@
     - mariadb
     - wordpress
   vars:
-    lamp_databases:
+    mariadb_databases:
       - wp_db
-    lamp_root_password: fogMeHud8
-    lamp_users:
+    mariadb_root_password: fogMeHud8
+    mariadb_users:
       - name: wp_user
         password: CorkIgWac
         priv: "wp_db.*:ALL,GRANT"
@@ -29,6 +29,24 @@
       - mariadb
       - mariadb-server
       - MySQL-python
+      
+- hosts: monitoring
+  sudo: yes
+  roles:
+    - bertvv.el7
+    - collectd
+    - graphite
+    - mariadb
+  vars:
+    collectd_server: 192.0.3.51
+    mariadb_databases:
+      - graph_db
+    mariadb_root_password: graphite
+    mariadb_users:
+      - name: graph_user
+        password: graphite
+        priv: "graph_db.*:ALL,GRANT"
+  
 
  
 

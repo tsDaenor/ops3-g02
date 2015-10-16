@@ -1,8 +1,8 @@
 # roles/mariadb/defaults/main.yml
 ---
 
-lamp_databases: []
-lamp_users: []
-lamp_root_password: ''
+mariadb_databases: []
+mariadb_users: []
+mariadb_root_password: ''
 
-lamp_bind_address: '127.0.0.1'
+mariadb_bind_address: '127.0.0.1'
