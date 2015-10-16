@@ -33,4 +33,5 @@
   tags: httpd
 
 - name: Configure firewall
-  script: ../files/firewall.sh  
+  script: ../files/firewall.sh
+  notify: restart firewalld  
