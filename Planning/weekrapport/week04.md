@@ -31,7 +31,7 @@
 
 ### Bram Martens
 
-![alt Bram](images/week04/bram.png)
+![alt Bram](images/week04/bram.PNG)
 
 ### Dennis Verfaillie
 
