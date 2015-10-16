@@ -34,9 +34,10 @@
   sudo: yes
   roles:
     - bertvv.el7
+    - mariadb
     - collectd
     - graphite
-    - mariadb
+   
   vars:
     collectd_server: 192.0.3.51
     mariadb_databases:
