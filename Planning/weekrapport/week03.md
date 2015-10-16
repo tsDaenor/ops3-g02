@@ -1,4 +1,4 @@
-# Voortgangsrapport week 01
+# Voortgangsrapport week 04
 
 * Groep:02
 * Datum: 16/10/15
@@ -16,34 +16,34 @@
 
 ####Huboard
 
-![alt Huboard](images/huboard/week01.PNG)
+![alt Huboard](images/huboard/week04.PNG)
 
 ####Burndown
 
 #####chart
-![alt burndownChart](images/week01/burndown/chart.PNG)
+![alt burndownChart](images/week04/burndown/chart.PNG)
 
 #####data
-![alt burndowntasks](images/week01/burndown/tasks.PNG)
+![alt burndowntasks](images/week04/burndown/tasks.PNG)
 ####Toggle
 
-![alt tasks](images/week01/tasks.PNG)
+![alt tasks](images/week04/tasks.PNG)
 
 ### Bram Martens
 
-![alt Bram](images/week01/bram.PNG)
+![alt Bram](images/week04/bram.PNG)
 
 ### Dennis Verfaillie
 
-![alt Dennis](images/week01/dennis.PNG)
+![alt Dennis](images/week04/dennis.PNG)
 
 ### Tomas Vercautter
 
-![alt Tomas](images/week01/tomas.PNG)
+![alt Tomas](images/week04/tomas.PNG)
 
 ### Toon Lamberigts
 
-![alt Toon](images/week01/toon.PNG)
+![alt Toon](images/week04/toon.PNG)
 
 ## Wat plan je volgende week te doen?
 
