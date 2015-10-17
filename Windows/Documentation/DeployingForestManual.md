@@ -39,3 +39,9 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
 
   - Install Active Directory Domain Services
   `Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools`
+
+  - Create the forest (Poliforma)
+  `Install ADDSForest`
+  DomainName -> Poliforma.be
+  SafeModeAdministratorPassword -> You can choose your own password
+  Confirm password -> retype your password
