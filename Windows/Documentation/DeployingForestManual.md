@@ -32,7 +32,7 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
   - Set DNS Server addresses
   ```
   Set-DnsClientServerAddress `
-     -InterfaceAlias "10 Network" `
+     -InterfaceAlias "Ethernet 2" `
      -ServerAddresses 192.168.10.2,2001:db8:0:10::2
   ```
   
