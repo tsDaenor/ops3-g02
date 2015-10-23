@@ -1,6 +1,6 @@
-##Handleiding Deployment Windows Server 2012 (core)
+##Handleiding Deployment Windows Server 2012 (core): Deploy Forest
 
-Deze handleiding stelt u in staat om zelf een Windows 2012 Server via powershell te deployen. Het te bekomen resultaat is net zoals na opdracht 1 en 2 uit de cursus Windows Server
+Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Server 2012 (core) met behulp van commando's in powershell.
 
 #####Deploy your first forest
 * Configure the server ip address
@@ -39,3 +39,9 @@ Deze handleiding stelt u in staat om zelf een Windows 2012 Server via powershell
 
   - Install Active Directory Domain Services
   `Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools`
+
+  - Create the forest (Poliforma)
+  `Install ADDSForest`
+  DomainName -> Poliforma.be
+  SafeModeAdministratorPassword -> You can choose your own password
+  Confirm password -> retype your password
