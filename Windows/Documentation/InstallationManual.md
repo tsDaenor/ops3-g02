@@ -4,5 +4,5 @@ Deze handleiding stelt je in staat om de core versie (zonder gui) van Windows Se
 
 ##### Installing the OS
 * Kies voor Windows Server 2012 (core) installatie (zonder gui)
-* Maak administrator account aan metje eigen wachtwoord
+* Maak administrator account aan met je eigen wachtwoord
 * Kies de toetsenbordindeling
