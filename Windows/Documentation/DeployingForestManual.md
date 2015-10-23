@@ -3,7 +3,7 @@
 Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Server 2012 (core) met behulp van commando's in powershell.
 
 #####Deploy your first forest
-* Ga naar Powershell
+* Ga naar Powershell:
   `powershell`
 * Configure the server ip address
   - disable DHCP on Ethernet 2 adapter
