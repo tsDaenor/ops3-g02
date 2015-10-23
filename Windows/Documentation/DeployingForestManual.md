@@ -23,7 +23,7 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
    ```
   New-NetIPAddress `
      -AddressFamily IPv6 `
-     -InterfaceAlias "10 Network" `
+     -InterfaceAlias "Ethernet 2" `
      -IPAddress 2001:db8:0:10::2 `
      -PrefixLength 64 `
      -DefaultGateway 2001:db8:0:10::1`
