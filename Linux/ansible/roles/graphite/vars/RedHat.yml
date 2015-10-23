@@ -1,6 +1,5 @@
 packages:
   - graphite-web
-  - httpd
   - python-carbon
   - python-yaml
   - libselinux-python
