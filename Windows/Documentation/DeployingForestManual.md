@@ -13,7 +13,7 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
   ```
   New-NetIPAddress `
      -AddressFamily IPv4 `
-     -InterfaceAlias "10 Network" `
+     -InterfaceAlias "Ethernet 2" `
      -IPAddress 192.168.10.2 `
      -PrefixLength 24 `
      -DefaultGateway 192.168.10.1`
