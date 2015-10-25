@@ -6,6 +6,7 @@
 |  Gebeurtenis | Commando  |
 | :---     | :--- |
 | Verander map | set-location c:\ |
+| ga naar c:\ | cd\ |
 | Geef lijst mappen | ls |
 | Wis scherm | clear |
 | maak map test | md test |
@@ -66,3 +67,21 @@ Handig: om te kopiëren in Powershell moet je tekst selecteren en rechts klikken
 
 - verander property naam naar ComputerName: Get-ADComputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}}
 - Zoek info bios met behulp van pipeline:	Get-Wmiobject -Class win32_bios -ComputerName (Get-ADComputer -filter *).name
+
+### 6. The PowerShell in the shell: remoting
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Voor WS2012: enable remoting | Enable-PSRemoting |
+| open nieuwe sessie op DC | Enter-PSSession -ComputerName dc |
+| krijg info over alle computers | invoke-command -ComputerName dc,s1,s2 {get-eventlog -logname system -new 3} |
+| zoek enkel lokaal | invoke-command {get-service -name bits} |
+| zoek features powershell | get-windowsfeature *powershell* |
+| installeer feature | Install-WindowsFeature WindowsPowershellWebaccess |
+| maak een webapp | Install-pswaWebApplication -UseTestCertification |
+| geef iedereen alle rechten | Add-PswaAuthorizationRule * * * |
+| opent powershell in browser | start iexplore https://pwa/pswa |
+| toon schijven lokaal | Get-Volume |
+| toon alle schijven | icm dc,s1,s2 {Get-Volume} |
+
+
