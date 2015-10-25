@@ -43,5 +43,15 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 
 ###### zie scripts voor script om dns records up te daten
 
+#### 4. Configuring DHCP scopes
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| install dhcp and management tools | Get-WindowsFeature | Where-Object Name -like \*dhcp\* Install-WindowsFeature DHCP -IncludeManagementTools |
+| create dhcp scope | Add-DhcpServerv4Scope -Name "Corpnet" -StartRange 10.10.10.100 -EndRange 10.10.10.200 -SubnetMask 255.255.255.0 |
+| set dhcp options | Set-DhcpServerv4OptionValue -DnsDomain corp.contoso.com -DnsServer 10.10.10.10 -Router 10.10.10.1  |
+| activate dhcp | Add-DhcpServerInDC -DnsName corpdc1.corp.contoso.com |
+| adding dhcp reservation | Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress 10.10.10.102 –name test2 –description "Test server" –clientid 1234-56-78-90-12 Get-dhcpserverv4reservation –scopeid 10.10.10.0 |
+| adding dhcp exclusions | Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange 10.10.10.110 –EndRange 10.10.10.111 Get-DhcpServerv4ExclusionRange |
 
 
