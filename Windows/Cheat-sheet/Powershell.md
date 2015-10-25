@@ -43,5 +43,26 @@ Handig: om te kopiëren in Powershell moet je tekst selecteren en rechts klikken
 |  Gebeurtenis | Commando  |
 | :---     | :--- |
 | zoek een service | get-service b* |
+| zoek childitem | get-childitem |
+| zoek in logfiles | Get-EventLog |
+| xml toekennen aan variabele | $x = [xml](cat.\r_and_j.xml) |
+| opvragen uit xml | $x.PLAY.ACT[0] |
+| get process | gps |
+
+- alle processen met handles groter dan 900: get-process | where handles -gt 900 | sort handles
+- Voorbeeld met properties: Get-Childitem | Select -Property name, length | sort -Property length -Descending
+- Object op dit moment in de pipeline opvragen: get-service | where {$_.status = "Running"}
+- gps | where {$_.handles -ge 1000}
+
+### 5. The pipeline: deeper
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| geef alle computers in AD | Get-AdComputer (beveiligd) |
+| idem | Get-ADComputer -filter * |
+| toon BIOS info | Get-WmiObject -Class win32_bios |
+| BIOS info van bepaalde pc's | Get-WmiObject -Class win32_bios -computername DC,S1,S2 |
 
 
+- verander property naam naar ComputerName: Get-ADComputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}}
+- Zoek info bios met behulp van pipeline:	Get-Wmiobject -Class win32_bios -ComputerName (Get-ADComputer -filter *).name
