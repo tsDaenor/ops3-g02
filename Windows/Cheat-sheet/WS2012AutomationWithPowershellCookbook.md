@@ -13,6 +13,6 @@
 
 |  Gebeurtenis | Commando  |
 | :---     | :--- |
-| zoek features om te installeren | Get-WindowsFeature | Where-Object Name -Like \*domain\* |
+| zoek features om te installeren | Get-WindowsFeature \| Where-Object Name -Like \*domain\* |
 
 
