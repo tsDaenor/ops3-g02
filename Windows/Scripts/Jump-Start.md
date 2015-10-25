@@ -4,6 +4,7 @@ Dit script toont info over een harde schijf.
 
 
 function get-diskinfo{
+
 [cmdletbinding()]
 param(
 [Parameter(Mandatory=$True)]
