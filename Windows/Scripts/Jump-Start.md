@@ -4,11 +4,10 @@ Dit script toont info over een harde schijf.
 
 
 function get-diskinfo{
-
 [cmdletbinding()]
 param(
-[Parameter(Mandatory=$True)]
-[string[]]$computername,}
+[Parameter(Mandatory=$true)]
+[string[]]$computername}
 $bogus
 )
 
