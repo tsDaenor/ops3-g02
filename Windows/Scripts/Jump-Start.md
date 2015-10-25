@@ -3,13 +3,13 @@
 Dit script toont info over een harde schijf.
 
 
-function get-diskinfo{
-[cmdletbinding()]
-param(
-[Parameter(Mandatory=$true)]
-[string[]]$computername}
-$bogus
-)
+function get-diskinfo{  
+[cmdletbinding()]  
+param(  
+[Parameter(Mandatory=$true)]  
+[string[]]$computername}  
+$bogus  
+)  
 
 get-wmiobject -computername $computername -class win32_logicaldisk -filter "DeviceID='c:'"}
 
