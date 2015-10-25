@@ -23,3 +23,23 @@ $Today = (Get-Date)
 $TimeTilChristmas = $Christmas - $Today  
 Write-Host $TimeTilChristmas.Days "Days 'til Christmas"  
 }
+
+
+#### update dns records
+
+Function Update-DNSServerResourceRecord {  
+param(  
+[string]$zoneName = $(throw "DNS zone name required")  
+,[string]$recordName = $(throw "DNS record name required")  
+,[string]$newIPv4Address = $(throw "New IPv4Address required")  
+)  
+# Get the current record from DNS  
+$oldRecord = Get-DnsServerResourceRecord -ZoneName $zoneName -Name $recordName  
+Write-Host "Original Value: " $oldRecord.RecordData. IPv4Address  
+# Clone the record and update the new IP address  
+$newRecord=$oldRecord.Clone()  
+$newRecord.RecordData.IPv4Address = [ipaddress]$newIPv4Address  
+# Commit the changed record  
+Set-DnsServerResourceRecord -ZoneName $zoneName -OldInputObject $oldRecord -NewInputObject $newRecord  
+Write-Host "New Value: " (Get-DnsServerResourceRecord -ZoneName $zoneName -Name $recordName).RecordData.IPv4Address  
+}
