@@ -22,7 +22,11 @@
 Het systeem promoveren tot DC
 
 ```
-Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools –ComputerName CORPDC2 Invoke-Command –ComputerName CORPDC2 –ScriptBlock { $secPass = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText –Force $myCred = New-Object -TypeName PSCredential -ArgumentList "corp\ administrator", $secPass $SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText –Force Install-ADDSDomainController -DomainName corp.contoso.com – SafeModeAdministratorPassword $SMPass -Credential $myCred – Confirm:$false } 
+Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools –ComputerName CORPDC2 Invoke-Command  
+–ComputerName CORPDC2 –ScriptBlock { $secPass = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText –Force $myCred = New-Object  
+-TypeName PSCredential -ArgumentList "corp\ administrator", $secPass $SMPass = ConvertTo-SecureString 'P@$$w0rd11'  
+–AsPlainText –Force Install-ADDSDomainController -DomainName corp.contoso.com – SafeModeAdministratorPassword $SMPass  
+-Credential $myCred – Confirm:$false }  
 ```
 
 #### 3. Configuring zones in DNS
