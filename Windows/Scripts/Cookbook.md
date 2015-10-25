@@ -18,7 +18,6 @@ Catch {
 
 Function Get-DaysTilChristmas   
 {  
-<#  
 $Christmas=Get-Date("25 Dec " + (Get-Date).Year.ToString() + " 7:00 AM")  
 $Today = (Get-Date)  
 $TimeTilChristmas = $Christmas - $Today  
