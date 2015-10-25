@@ -84,4 +84,35 @@ Handig: om te kopiëren in Powershell moet je tekst selecteren en rechts klikken
 | toon schijven lokaal | Get-Volume |
 | toon alle schijven | icm dc,s1,s2 {Get-Volume} |
 
+### 7. Getting prepared for automation
 
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| geef alle schijven | get-psdrive |
+| op schijf cert zoeken naar certificaten | dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a |
+| zet in variabele | $a |
+| zet gegevens van $a in $cert | $cert : $a[0] |
+| zoek execution policy | get-executionpolicy |
+| zet execution policy naar allsigned | set-executionpolicy allsigned |
+| variabele maken | $myvar="hello" |
+| commando toevoegen aan var | $myvar=Get-Service bits |
+| tekst opslaan in var | $var = read-host "Enter a computerName" |
+
+### 8. Automation in scale: remoting
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| create powershell session | $sessions=New-PSSession -ComputerName dc |
+| toon sessie | Get-PSSession |
+| variabele lokaal opslaan | icm -Session $Sessions {$var=2} |
+| meet hoe lang het duurt om iets uit te voeren |	measure-command {icm -computername dc {get-process}} |
+| sessie op meerdere computers | $s = New-PSSession -ComputerName $servers |
+| web server installeren op iedere computer | icm -session $s {install-WindowsFeature web-server} |
+| module AD remote installeren | import-pssession -session $s -module activedirectory -prefix remote |
+| krijg functie en commando | Get-Command get-*ADComputer |
+
+### 9. Introducing scripting and toolmaking
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| informatie C-schijf | get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" |
