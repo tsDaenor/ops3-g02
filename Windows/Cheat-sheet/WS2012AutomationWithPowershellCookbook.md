@@ -54,4 +54,19 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 | adding dhcp reservation | Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress 10.10.10.102 –name test2 –description "Test server" –clientid 1234-56-78-90-12 Get-dhcpserverv4reservation –scopeid 10.10.10.0 |
 | adding dhcp exclusions | Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange 10.10.10.110 –EndRange 10.10.10.111 Get-DhcpServerv4ExclusionRange |
 
+#### 5. Building out a PKI environment
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install certificate server | Get-WindowsFeature | Where-Object Name -Like *cert* Install-WindowsFeature AD-Certificate -IncludeManagementTools -IncludeAllSubFeature |
+| Configure server as an enterprise CA | Install-AdcsCertificationAuthority -CACommonName corp.contoso.com -CAType EnterpriseRootCA -Confirm:$false |
+| install root certificate | Certutil –pulse |
+| request machine certificate | Set-CertificateAutoEnrollmentPolicy -PolicyState Enabled -Context Machine -EnableTemplateCheck |
+
+#### 6. Creating AD users
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Create a single AD user account | New-ADUser -Name JSmith |
+| Create multiple AD user accounts | zie scripts |
 
