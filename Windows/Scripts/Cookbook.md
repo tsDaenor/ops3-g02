@@ -25,7 +25,7 @@ Write-Host $TimeTilChristmas.Days "Days 'til Christmas"
 }
 
 
-#### update dns records
+##### update dns records
 
 Function Update-DNSServerResourceRecord {  
 param(  
@@ -43,3 +43,22 @@ $newRecord.RecordData.IPv4Address = [ipaddress]$newIPv4Address
 Set-DnsServerResourceRecord -ZoneName $zoneName -OldInputObject $oldRecord -NewInputObject $newRecord  
 Write-Host "New Value: " (Get-DnsServerResourceRecord -ZoneName $zoneName -Name $recordName).RecordData.IPv4Address  
 }
+
+
+##### Create multiple AD user accounts
+```
+Function Create-Users{  
+param($fileName, $emailDomain, $userPass, $numAccounts=10)  
+if($fileName -eq $null ){  
+[array]$users  = $null  
+for($i=0; $i -lt $numAccounts; $i++){  
+$users += [PSCustomObject]@{  
+FirstName = 'Random'  
+LastName = 'User' + $i  
+}  
+}  
+} else  
+{   
+$users = Import-Csv -Path $fileName   
+}
+```
