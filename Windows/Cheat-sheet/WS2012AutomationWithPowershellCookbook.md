@@ -80,5 +80,15 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 | find accounts with multiple logon failures | $primaryDC = Get-ADDomainController -Discover -Service PrimaryDC Get-ADUser -Filter 'badpwdcount -ge 5' -Server $primaryDC.Name ` -Properties BadPwdCount \| Select-Object DistinguishedName, BadPwdCount
 |
 
+#### 8. Finding expired computers in AD
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| find recently aged accounts | $30Days = (Get-Date).AddDays(-30) Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate -lt $30Days' \| Format-Table Name, LastLogonDate |
+| find older accounts | $60Days = (Get-Date).AddDays(-60) Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate -lt $60Days' \| Format-Table Name, LastLogonDate |
+
+
+
+
 
 
