@@ -2,7 +2,7 @@
 
 
 ##### Vermenigvuldig getallen
-
+```
 Function Multiply-Numbers {  
 Param($FirstNum, $SecNum)  
 Try {  
@@ -12,10 +12,10 @@ Catch {
   Write-Host "Error in function, present two numbers to multiply"  
   }   
 }  
-
+```
 
 ##### Bereken aantal dagen tot kerstmist
-
+```
 Function Get-DaysTilChristmas   
 {  
 $Christmas=Get-Date("25 Dec " + (Get-Date).Year.ToString() + " 7:00 AM")  
@@ -23,10 +23,10 @@ $Today = (Get-Date)
 $TimeTilChristmas = $Christmas - $Today  
 Write-Host $TimeTilChristmas.Days "Days 'til Christmas"  
 }
-
+```
 
 ##### update dns records
-
+```
 Function Update-DNSServerResourceRecord {  
 param(  
 [string]$zoneName = $(throw "DNS zone name required")  
@@ -43,7 +43,7 @@ $newRecord.RecordData.IPv4Address = [ipaddress]$newIPv4Address
 Set-DnsServerResourceRecord -ZoneName $zoneName -OldInputObject $oldRecord -NewInputObject $newRecord  
 Write-Host "New Value: " (Get-DnsServerResourceRecord -ZoneName $zoneName -Name $recordName).RecordData.IPv4Address  
 }
-
+```
 
 ##### Create multiple AD user accounts
 ```
