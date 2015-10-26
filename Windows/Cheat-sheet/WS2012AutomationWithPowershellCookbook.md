@@ -100,6 +100,6 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 |  Gebeurtenis | Commando  |
 | :---     | :--- |
 | request certificate and install it | Get-Certificate -Template WebServer -DnsName NLB_IIS.corp.contoso. com - CertStoreLocation Cert:\LocalMachine\My |
-| create a new https binding | New-WebBinding -Name 'Default Web Site' -Protocol https -Port 443 \|
-| assign certificate to the binding \| $myCert = Get-Item Cert:\LocalMachine\My\\* \| ` Where-Object Subject -eq 'CN=NLB_IIS.corp.contoso.com' $myCert \| New-Item IIS:\SslBindings\0.0.0.0!443 |
+| create a new https binding | New-WebBinding -Name 'Default Web Site' -Protocol https -Port 443 |
+| assign certificate to the binding | $myCert = Get-Item Cert:\LocalMachine\My\\* \| ` Where-Object Subject -eq 'CN=NLB_IIS.corp.contoso.com' $myCert \| New-Item IIS:\SslBindings\0.0.0.0!443 |
 
