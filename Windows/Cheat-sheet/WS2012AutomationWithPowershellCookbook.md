@@ -70,3 +70,15 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 | Create a single AD user account | New-ADUser -Name JSmith |
 | Create multiple AD user accounts | zie scripts |
 
+#### 7. Searching for and reporting on AD users
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| report on all users and their logon scripts | Get-ADUser -Filter * -Properties SamAccountName, DisplayName, \` ProfilePath, ScriptPath \| \` Select-Object SamAccountName, DisplayName, ProfilePath, ScriptPath |
+| find all disabled user accounts | Get-ADUser –Filter 'Enabled -eq $false' |
+| find users that haven't logged in in the last 30 days | $logonDate = (Get-Date).AddDays(-30) Get-ADUser -Filter 'LastLogonDate -lt $logonDate' \| Select-Object DistinguishedName |
+| find accounts with multiple logon failures | $primaryDC = Get-ADDomainController -Discover -Service PrimaryDC Get-ADUser -Filter 'badpwdcount -ge 5' -Server $primaryDC.Name ` -Properties BadPwdCount \| Select-Object DistinguishedName, BadPwdCount
+|
+
+
+
