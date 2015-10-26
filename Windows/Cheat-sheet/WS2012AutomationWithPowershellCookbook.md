@@ -87,8 +87,19 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 | find recently aged accounts | $30Days = (Get-Date).AddDays(-30) Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate -lt $30Days' \| Format-Table Name, LastLogonDate |
 | find older accounts | $60Days = (Get-Date).AddDays(-60) Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate -lt $60Days' \| Format-Table Name, LastLogonDate |
 
+#### 9. Installing and configuring IIS
 
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| install IIS | Get-WindowsFeature | Where-Object Name –likeweb* Install-WindowsFeature Web-WebServer –IncludeManagementTools |
+| load webadministration PS module | Import-Module WebAdministration |
+| view IIS sites | Get-ChildItem IIS:\sites |
 
+#### 10. Configuring IIS for SSL
 
-
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| request certificate and install it | Get-Certificate -Template WebServer -DnsName NLB_IIS.corp.contoso. com - CertStoreLocation Cert:\LocalMachine\My |
+| create a new https binding | New-WebBinding -Name 'Default Web Site' -Protocol https -Port 443 \|
+| assign certificate to the binding \| $myCert = Get-Item Cert:\LocalMachine\My\\* \| ` Where-Object Subject -eq 'CN=NLB_IIS.corp.contoso.com' $myCert \| New-Item IIS:\SslBindings\0.0.0.0!443 |
 
