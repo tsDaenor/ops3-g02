@@ -23,6 +23,10 @@
 - name: copy django/graphite settings
   template: src=local_settings.py.j2 dest={{ graphite_conf }}/local_settings.py
   notify: restart apache
+  
+- name: copy graphite apache config
+  copy: src=graphite-web.conf dest=/etc/httpd/conf.d/graphite-web.conf
+  sudo: yes  
 
 - name: setup carbon conf
   template: src=carbon.conf.j2 dest=/etc/carbon/carbon.conf
@@ -50,3 +54,7 @@
   with_items:
   - "{{ apache_service }}"
   - carbon-cache
+
+- name: Configure SELinux to allow httpd network connect mysql
+  command: "setsebool -P httpd_can_network_connect_db 1"
+  sudo: yes
