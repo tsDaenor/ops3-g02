@@ -94,3 +94,15 @@ $newPass += [char](Get-Random -Minimum 48 -Maximum 122)
 return $newPass }
 
 ```
+
+##### Delete log files older than 7 days
+
+```
+$logDirs = Get-ChildItem -Path IIS:\Sites | Get-ItemProperty `  
+-name logFile.directory.value | Select -Unique  
+$numDays = -7  
+foreach ($myDir in $logDirs){  
+  $myDir = [Environment]::ExpandEnvironmentVariables($myDir)  
+  Get-ChildItem -Path $myDir -Recurse | Where-Object LastWriteTime -lt `  
+  (Get-Date).AddDays($numDays) | Remove-Item }  
+```
