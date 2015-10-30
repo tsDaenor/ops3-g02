@@ -56,6 +56,14 @@ LoadPlugin cpu
 LoadPlugin interface
 LoadPlugin load
 LoadPlugin memory
+LoadPlugin apache
+
+<Plugin apache>
+    <Instance "Graphite">
+        URL "http://192.0.3.51/server-status"
+        Server "apache"
+    </Instance>
+</Plugin>
 
 <Include "{{ collectd_include_dir }}">
   Filter "*.conf"
