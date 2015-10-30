@@ -103,3 +103,91 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 | create a new https binding | New-WebBinding -Name 'Default Web Site' -Protocol https -Port 443 |
 | assign certificate to the binding | $myCert = Get-Item Cert:\LocalMachine\My\\* \| ` Where-Object Subject -eq 'CN=NLB_IIS.corp.contoso.com' $myCert \| New-Item IIS:\SslBindings\0.0.0.0!443 |
 
+#### 11. Configuring a central certificate store
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Configure certificate store | Enable-WebCentralCertProvider -CertStoreLocation \\\corpdc1\certs -UserName'Corp\SSLCerts' -Password 'Pa$$w0rd!' -PrivateKeyPassword 123456 |
+| Configure site to use SSL | New-WebBinding -Name 'Default Web Site' -HostHeader Test1.corp. contoso.com -Protocol https -SslFlags 2 |
+
+#### 12. Configuring IIS bindings
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Create a new website using a unique ip address | New-Website -PhysicalPath C:\inetpub\IPBinding -Name IPBinding -IPAddress 10.10.10.250 |
+| Create a new website using a unique tcp port | New-Website -PhysicalPath C:\inetpub\PortBinding -Name PortBinding -Port 88 -IPAddress * |
+| Create a new website using host headers | New-Website -PhysicalPath C:\inetpub\HostHeader -Name HostHeader -HostHeader HostHeader |
+| Change the binding of a website | Set-WebBinding -Name PortBinding -BindingInformation "*:88:" -PropertyName Port -Value 89 |
+
+#### 13. Configuring IIS logging 
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Change IIS logging directory | Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. directory -Value 'C:\Logs\IIS' |
+| Change the logging type | Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. logFormat 'W3C' |
+| Change logging frequency | Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. period -Value Weekly |
+| Change logging to use a maximum size | Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. period -Value MaxSize Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. truncateSize 9000000 |
+| Disable logging | Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name logFile. enabled -Value False |
+
+#### 14. Configuring NLB across multiple server
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install NLB feature on the web servers | Invoke-Command -ComputerName web1, web2 ` -ScriptBlock { Install-WindowsFeature NLB -IncludeManagementTools } |
+| Set up the NLB clusters on first host | New-NlbCluster -HostName web1 -InterfaceName Ethernet \` -ClusterName NLB_IIS -ClusterPrimaryIP 10.10.10.240 \` -SubnetMask 255.255.255.0 -OperationMode Multicast |
+| Add the second host to cluster | Get-NlbCluster -HostName web1|Add-NlbClusterNode -NewNodeName web2 -NewNodeInterface Ethernet |
+| Specify the ports for the cluster to balance | Set-NlbClusterPortRule -HostName web1 -NewStartPort 80 -NewEndPort 80 |
+
+#### 15. Monitoring load balancing across NLB nodes
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| View the status of the hosts in the cluster | Get-NlbClusterNode -HostName web1 |
+| View the cluster's affinity settings | Get-NlbClusterPortRule -HostName web1 |
+| View the host connection count for each node | $myNodes = Get-NlbClusterNode -HostName web1 $myCounter = $myNodes.Name \| ForEach-Object {    "\\\$_\\Web Service(_Total)\Current Connections" } Get-Counter -Counter $myCounter |
+
+#### 16. Managing NTFS file permissions
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Read the permissions file and save them into a variable called $ac1 | $acl = Get-Acl M:\Sales\goals.xls |
+| Creeate new FileSystemAccessRule | $ace = New-Object System.Security.AccessControl. FileSystemAccessRule "joe.smith","FullControl","Allow" |
+| Append the permissions | $acl.SetAccessRule($ace) |
+| Apply the permissions to the file | $acl \| Set-Acl M:\Sales\goals.xls |
+| Create new folder | New-Item M:\Marketing2 -ItemType Directory |
+| Get the existing folder permissions | $SrcAcl = Get-Acl M:\Marketing |
+| Set the new permissions | Set-Acl -Path M:\Marketing2 $SrcAcl |
+| Take ownership of the folder | $folder = "M:\Groups\Projections" takeown /f $folder /a /r /d Y |
+| Add permission for the manager | $acl = Get-Acl $folder $ace = New-Object System.Security.AccessControl. FileSystemAccessRule ` "joe.smith","FullControl","Allow" $acl.SetAccessRule($ace) Set-Acl $folder $acl |
+| Recursively overwrite permissions | Get-ChildItem $folder -Recurse -Force |` ForEach {    Get-Acl $acl | Set-Acl -Path $_.FullName } |
+| get current permissions | $acl = Get-Acl M:\Groups\Imaging |
+| enable or disable inheritance | $acl.SetAccessRuleProtection($True, $False) #first option is to disable inheritance - true=disable \#second option is to keep inherited permissions - false=discard |
+| Commit the change | Set-Acl M:\Groups\Imaging $acl |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
