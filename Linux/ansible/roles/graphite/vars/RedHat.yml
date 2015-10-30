@@ -3,6 +3,7 @@ packages:
   - python-carbon
   - python-yaml
   - libselinux-python
+  - libsemanage-python
 
 apache_service: httpd
 carbon_local_data_dir: /var/lib/carbon/whisper

@@ -56,5 +56,4 @@
   - carbon-cache
 
 - name: Configure SELinux to allow httpd network connect mysql
-  command: "setsebool -P httpd_can_network_connect_db 1"
-  sudo: yes
+  seboolean: name=httpd_can_network_connect_db state=yes persistent=yes
