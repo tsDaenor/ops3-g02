@@ -63,7 +63,7 @@ LoadPlugin write_graphite
     Host "{{ collectd_graphite_addr }}"
     Port "{{ collectd_graphite_port }}"
     Protocol "tcp"
-    Prefix "collectd"
+    Prefix "collectd."
     #Postfix "collectd"
     StoreRates true
     AlwaysAppendDS false
