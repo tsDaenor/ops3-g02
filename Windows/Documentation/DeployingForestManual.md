@@ -4,46 +4,26 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
 
 #####Deploy your first forest
 * Ga naar Powershell:
-  `powershell`
+  `powershell`  
+* Find the interface
+  - `Get-NetIPInterface`  
+  
 * Configure the server ip address
-  - disable DHCP on Ethernet 2 adapter
-   `Set-NetIPInterface -InterfaceAlias "Ethernet 2" -DHCP Disabled -PassThru`
-  
-  - Set IPv4 Address to 192.168.10.2
-  ```
-  New-NetIPAddress `
-     -AddressFamily IPv4 `
-     -InterfaceAlias "Ethernet 2" `
-     -IPAddress 192.168.10.2 `
-     -PrefixLength 24 `
-     -DefaultGateway 192.168.10.1`
-  ``` 
-  
-  - Set IPv6 Address to 2001:db8:0:10::2
-   ```
-  New-NetIPAddress `
-     -AddressFamily IPv6 `
-     -InterfaceAlias "Ethernet 2" `
-     -IPAddress 2001:db8:0:10::2 `
-     -PrefixLength 64 `
-     -DefaultGateway 2001:db8:0:10::1`
-  ``` 
+  - Set IPv4 Address  
+   `New-NetIPAddress -AddressFamily IPv4 -IPAddress 10.10.10.10 -PrefixLength 24 -InterfaceAlias Ethernet`
   
   - Set DNS Server addresses
   ```
-  Set-DnsClientServerAddress `
-     -InterfaceAlias "Ethernet 2" `
-     -ServerAddresses 192.168.10.2,2001:db8:0:10::2
+  Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses "10.10.10.10","10.10.10.11" 
   ```
   
-  - Set the server name
-  `Rename-Computer -NewName PFSV1 -Restart -Force -PassThru`
+* Set default route
+  - `New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "10.10.10.1" -InterfaceAlias Ethernet` 
+  
+* Install ADDS
+  - `Get-WindowsFeature | Where-Object Name -like *domain*`  
+  - `Get-WindowsFeature | Where-Object Name -like *dns*`  
+  - `Install-WindowsFeature AD-Domain-Services, DNS – IncludeManagementTools`  
+  - `$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText -Force`  
+  - `Install-ADDSForest -DomainName corp.contoso.com – SafeModeAdministratorPassword $SMPass –Confirm:$false`
 
-  - Install Active Directory Domain Services
-  `Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools`
-
-  - Create the forest (Poliforma)
-  `Install ADDSForest`
-  DomainName -> Poliforma.be
-  SafeModeAdministratorPassword -> You can choose your own password
-  Confirm password -> retype your password

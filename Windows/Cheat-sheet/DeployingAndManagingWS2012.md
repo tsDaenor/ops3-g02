@@ -80,4 +80,20 @@ Or if your server hasn't access to internet, save it on a networkshare:
 2. Update-help: `Update-Help -DestinatonPath <fill in path> -force`
 
 #### Test the forest creation
+Test the environment to find out whether installing the new forest will succeed.The
+[script used](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/DeployingAndManagingWS2012/Test-myForestCreate.ps1 "Script").
 
+#### Deploy the first domain controller and forest
+Install the domain and forest. The parameter -SkipPreChecks is used beacause you already tested the environment. The Directory Services Restore Mode (DSRM) is still asked. You can automate this with the `$pwdSS = ConvertTo-SecureString -String 'P@ssw0rd!' -AsPlainText -Force` command. The password is set to 'P@ssw0rd!'.
+
+```Install-ADDSForest `
+     -DomainName '<fill in domain name>' `
+     -DomainNetBiosName '<fill in bios name>' `
+     -DomainMode 6 `
+     -ForestMode 6 `
+     -NoDnsOnNetwork `
+     -SkipPreChecks `
+     -Force```
+
+#### Check forest and domain installation
+Find out what Forest Mode, Domain Mode and Schema Version you've created, use the following [script](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/DeployingAndManagingWS2012/Get-myADVersion.ps1).
