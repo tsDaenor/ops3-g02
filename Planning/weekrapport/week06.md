@@ -74,9 +74,14 @@
 ## Feedback technisch luik
 
 ### Algemeen
-
-
-### Algemeen
+* Kanban bord en toggle:
+    * Noteer in de tickets en tijdsregistratie welke hoofdstukken je doornam. De beschrijving is te algemeen. 
+* Windows:
+    * Samenvatting is al veel beter. Doe zo verder.
+    * Document cheatsheet: Zeer goed
+    * Scripts: goed
+    * Slechts 1 testplan. Testen mogen starten. We zullen dit vrijdag bespreken.
+    * 3 cheatsheets en 4 studenten? Vrijdag eens bespreken.
 ### Bram Martens
 ### Dennis Verfaillie
 ### Tomas Vercautter
