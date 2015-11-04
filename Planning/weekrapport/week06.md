@@ -75,7 +75,7 @@
 
 ### Algemeen
 * Kanban bord en toggle:
-    * Noteer in de tickets en tijdsregistratie welke hoofdstukken je doornam. De beschrijving is te algemeen. 
+    * Rapportage zeer goed 
 * Windows:
     * Samenvatting is al veel beter. Doe zo verder.
     * Document cheatsheet: Zeer goed
