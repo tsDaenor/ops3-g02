@@ -165,9 +165,54 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 | Commit the change | Set-Acl M:\Groups\Imaging $acl |
 
 
+#### 17. Configuring NTFS deduplication
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install the deduplication feature on the server | Add-WindowsFeature FS-Data-Deduplication |
+| Use DDPEval to report on the estimated savings | ddpeval.exe M:\ |
+| Configure the disk for deduplication | Enable-DedupVolume M:\ |
+| Set the deduplication age to 0 days to test deduplication process | Set-DedupVolume M: -MinimumFileAgeDays 0 |
+| Start the deduplication job | Start-DedupJob M: -type Optimization |
 
 
+#### 18. Configuring storage pools
 
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| List disks capable of pooling | Get-PhysicalDisk -CanPool $true |
+| Using the available disks, create a storage pool | $poolDisks = Get-PhysicalDisk -CanPool $true New-StoragePool -FriendlyName "MyPool" -PhysicalDisks $poolDisks \` -ProvisioningTypeDefault Thin \` -StorageSubSystemFriendlyName "Storage Spaces*" |
+| Using the newly created storage pool, create a virtual disk | Get-StoragePool -FriendlyName MyPool \| \` New-VirtualDisk -FriendlyName "TestData" -Size 10GB \` -ProvisioningType Thin |
+| Initialize, partition, and format the virtual disk | Get-VirtualDisk -FriendlyName TestData \| Initialize-Disk -PassThru \| \` New-Partition -AssignDriveLetter -UseMaximumSize \| \` Format-Volume -Confirm:$false |
+
+
+#### 19. Creating and securing CIFS shares
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| View current shares on your server | Get-SmbShare |
+| Create the first basic file share | New-Item -Path E:\Share1 -ItemType Directory New-SmbShare -Name Share1 -Path E:\share1 |
+| Create a second share granting everyone read access | New-Item -Path E:\Share2 -ItemType Directory New-SmbShare -Name Share2 -Path E:\share2 -ReadAccess Everyone ` -FullAccess Administrator -Description "Test share" |
+| list share permissions | Get-SmbShare \| Get-SmbShareAccess |
+| Grant Full Control access to the first share for user Joe Smith | Grant-SmbShareAccess -Name Share1 -AccountName CORP\Joe.Smith \` -AccessRight Full -Confirm:$false |
+
+#### 20. Accessing CIFS shares from Powershell
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| View contents of a share | Get-ChildItem \\\server1\share2  |
+| Map the share as persistent | New-PSDrive -Name S -Root \\\server1\share1 -Persist -PSProvider FileSystem |
+| Map the share using alternative credentials | $secPass = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText –Force $myCred = New-Object -TypeName PSCredential \` -ArgumentList "CORP\Administrator",$secPass New-PSDrive -Name S -Root \\\server1\share1 -Persist \` -PSProvider FileSystem -Credential $myCred |
+
+#### 21. Creating an NFS export
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install NFS server service | Add-WindowsFeature FS-NFS-Service –IncludeManagementTools |
+| Create a new NFS share | New-Item C:\shares\NFS1 -ItemType Directory  New-NfsShare -Name NFS1 -Path C:\shares\NFS1 |
+| Grant access to a remote computer | Grant-NfsSharePermission -Name NFS1 -ClientName Server1 \` -ClientType host -Permission readwrite -AllowRootAccess $true |
+
+#### 22. Installing Windows Server update services
 
 
 
