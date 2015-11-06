@@ -66,7 +66,6 @@
 ### Toon Lamberigts
 * boek windows powershell
 * documentatie windows powershell
-* monitoring server
 * handleiding monitoring server
 
 ## Waar hebben jullie nog problemen mee?
@@ -74,14 +73,7 @@
 ## Feedback technisch luik
 
 ### Algemeen
-* Kanban bord en toggle:
-    * Rapportage zeer goed 
-* Windows:
-    * Samenvatting is al veel beter. Doe zo verder.
-    * Document cheatsheet: Zeer goed
-    * Scripts: goed
-    * Slechts 1 testplan. Testen mogen starten. We zullen dit vrijdag bespreken.
-    * 3 cheatsheets en 4 studenten? Vrijdag eens bespreken.
+
 ### Bram Martens
 ### Dennis Verfaillie
 ### Tomas Vercautter
