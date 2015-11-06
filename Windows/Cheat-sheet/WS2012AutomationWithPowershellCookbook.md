@@ -214,6 +214,13 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 
 #### 22. Installing Windows Server update services
 
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install the updateservices feature | Install-WindowsFeature UpdateServices -IncludeManagementTools |
+| Perform the initial configuration | New-Item E:\MyContent -ItemType Directory & 'C:\Program Files\Update Services\Tools\WsusUtil.exe' postinstall contentdir=e:\Mycontent |
+| Review current synchronization settings | $myWsus = Get-WsuscServer  $myWsus.GetSubscription() |
+| Perform the initial synchronization (only syncs categories) | $mySubs = $myWsus.GetSubscription() $mySubs.StartSynchronizationForCategoryOnly() |
+| Get a report on the synchronization status | $mySubs.GetSynchronizationProgress()  $mySubs.GetSynchronizationStatus()   $mySubs.GetLastSynchronizationInfo() |
 
 
 
