@@ -4,7 +4,7 @@
 #### Get the adapter alias and index
 `Get-NetAdapter`
 #
-EXTRA: View all the properties and the actions associated with Get-NetAdapter: `Get-NetAdapter | Get-Member`
+View all the properties and the actions associated with Get-NetAdapter: `Get-NetAdapter | Get-Member`
 #### Set a fixed IP Address
 1. Disable DHCP: `Set-NetIPInterface -InterfaceAlias "<fill in adapter alias>" -DHCP Disabled -PassThru`. Set-NetIPInterface doesn't return anything but the '-PassThru' parameter returns the status of the IP interface.
 2. Set the static IPv4 Address: in the example is the 192.168.10.0/24 subnet used
@@ -31,8 +31,8 @@ EXTRA: View all the properties and the actions associated with Get-NetAdapter: `
 
 #### Set the DNS server addresses
 ```
-Set-DnsClientServerAddress `
--InterfaceAlias "<fill in adapter alias>" `
+Set-DnsClientServerAddress 
+-InterfaceAlias "<fill in adapter alias>" 
 -ServerAddresses <fill in IP addresses separated by ",">
 ```
 
@@ -75,13 +75,13 @@ Test the environment to find out whether installing the new forest will succeed.
 Install the domain and forest. The parameter -SkipPreChecks is used beacause you already tested the environment. The Directory Services Restore Mode (DSRM) is still asked. You can automate this with the `$pwdSS = ConvertTo-SecureString -String 'P@ssw0rd!' -AsPlainText -Force` command. The password is set to 'P@ssw0rd!'.
 
 	```
-     Install-ADDSForest `
-     -DomainName '<fill in domain name>' `
-     -DomainNetBiosName '<fill in bios name>' `
-     -DomainMode 6 `
-     -ForestMode 6 `
-     -NoDnsOnNetwork `
-     -SkipPreChecks `
+     Install-ADDSForest 
+     -DomainName '<fill in domain name>' 
+     -DomainNetBiosName '<fill in bios name>' 
+     -DomainMode 6 
+     -ForestMode 6 
+     -NoDnsOnNetwork 
+     -SkipPreChecks 
      -Force
      ```
 
@@ -89,4 +89,38 @@ Install the domain and forest. The parameter -SkipPreChecks is used beacause you
 #### Check forest and domain installation
 Find out what Forest Mode, Domain Mode and Schema Version you've created, use the following [script](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/DeployingAndManagingWS2012/Get-myADVersion.ps1).
 
-#
+# Manage DNS and DHCP
+## Manage DNS zones
+### Manage primary zones
+#### Create new primary zones
+This creates an Active Directory-integrated zone that is replicated to the domain only. It accepts secure dynamic updates.
+A reverse lookup zone is not automaticly created.
+```
+Add-DnsServerPrimaryZone -Name '<fill in a name>' 
+                         -ComputerName '<fill in full computer name, like: name.domainname.com>' 
+                         -ReplicationScope 'Domain' 
+                         -DynamicUpdate 'Secure' 
+                         -PassThru
+```
+##### Create a reverse lookup zone
+It is similar to creating a forward lookup zone. Instead of the 'Name' parameter, you use the 'NetworkID' parameter.
+It is replicated accross the entire forest and accepts both secure and nonsecure updates.
+The 'NetworkID' parameter can also be an IPv6 address to create an IPv6 reverse lookup zone
+```
+Add-DnsServerPrimaryZone -NetworkID 192.168.10.0/24 
+                         -ReplicationScope 'Forest' 
+                         -DynamicUpdate 'NonsecureAndSecure' 
+                         -PassThru
+```
+NOTE: adjust the parameters to your own situation.
+
+##### Create a file-based zone
+Just use the 'ZoneFile' parameter, for example:
+```
+Add-DnsServerPrimaryZone -Name 'tailspintoys.com' `
+                         -ZoneFile 'tailspintoys.com.dns' `
+                         -DynamicUpdate 'None'
+ ```
+ 
+#### Change the settings of a primary zone
+ To change the settings you use the 'Set-DnsServerPrimaryZone' command.
