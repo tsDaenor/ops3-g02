@@ -1,27 +1,5 @@
 
 # Deploying forest and domain
-### Active Directory Windows PowerShell nouns & commands used (tijdelijk)
-#### Nouns
-- ADDSDomainController
-- ADDSForestInstallation
-- ADDSForest
-- ADRootDSE
-- ADObject
-#### Commands
-- Get-NetAdapter
-- Get-Member
-- Set-NetIPAddress
-- New-NetIPAddress
-- Set-DnsClientServerAddress
-- Get-NetIPAddress
-- Rename-Computer
-- Install-WindowsFeature
-- Get-Command
-- Format-Table
-- Update-Help
-- ConvertTo-SecureString
-
-## Deploy forest
 ### Configure the server IP address
 #### Get the adapter alias and index
 `Get-NetAdapter`
@@ -95,5 +73,15 @@ Install the domain and forest. The parameter -SkipPreChecks is used beacause you
      -SkipPreChecks `
      -Force```
 
+|Parameter			|   Type  		|Description|
+|-------------------|---------------|-----------|
+|-DomainName		|String			|The fully qualified domain name of the new
+domain (TreyResearch.net in this book’s example).|
+|[-CreateDnsDelegation]|
+
+
+
 #### Check forest and domain installation
 Find out what Forest Mode, Domain Mode and Schema Version you've created, use the following [script](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/DeployingAndManagingWS2012/Get-myADVersion.ps1).
+
+#
