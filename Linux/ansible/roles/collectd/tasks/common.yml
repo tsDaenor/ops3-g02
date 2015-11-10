@@ -44,6 +44,13 @@
     dest: "{{ collectd_include_dir }}graphite.conf"
   notify: restart collectd
   tags: collectd
+
+- name: Copy Apache Config
+  template:
+    src: apache.conf.j2
+    dest: "{{ collectd_include_dir }}apache.conf"
+  notify: restart collectd
+  tags: collectd
   
 - name: Configure SELinux to allow collectd TCP connections
   seboolean: name=collectd_tcp_network_connect state=yes persistent=yes

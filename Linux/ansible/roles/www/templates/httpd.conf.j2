@@ -97,3 +97,11 @@ EnableSendfile on
 
 # Load other configuration files
 IncludeOptional conf.d/*.conf
+
+ ExtendedStatus on
+  <IfModule mod_status.c>
+    <Location /mod_status>
+      SetHandler server-status
+      Require all granted
+    </Location>
+  </IfModule>
