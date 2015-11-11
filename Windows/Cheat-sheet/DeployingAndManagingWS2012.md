@@ -1,3 +1,6 @@
+# Change power saving settings
+- Change the monitor time out to 0: `powercfg.exe -change -monitor-timeout-ac 0`.
+- Change the standy time out to 0: `powercfg.exe -change -standy-timeout-ac 0`.
 
 # Deploying forest and domain
 ### Configure the server IP address
