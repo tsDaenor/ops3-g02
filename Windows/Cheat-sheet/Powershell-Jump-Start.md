@@ -8,7 +8,7 @@
 | Verander map | set-location c:\ |
 | ga naar c:\ | cd\ |
 | Geef lijst mappen | ls |
-| Wis scherm | clear |
+| Wis scherm | clear of cls |
 | maak map test | md test |
 | Help | help |
 | Start programma op | calculator |
