@@ -77,7 +77,7 @@ Test the environment to find out whether installing the new forest will succeed.
 #### Deploy the first domain controller and forest
 Install the domain and forest. The parameter -SkipPreChecks is used beacause you already tested the environment. The Directory Services Restore Mode (DSRM) is still asked. You can automate this with the `$pwdSS = ConvertTo-SecureString -String 'P@ssw0rd!' -AsPlainText -Force` command. The password is set to 'P@ssw0rd!'.
 
-	```
+```
      Install-ADDSForest 
      -DomainName '<fill in domain name>' 
      -DomainNetBiosName '<fill in bios name>' 
@@ -86,7 +86,7 @@ Install the domain and forest. The parameter -SkipPreChecks is used beacause you
      -NoDnsOnNetwork 
      -SkipPreChecks 
      -Force
-     ```
+```
 
 
 #### Check forest and domain installation
