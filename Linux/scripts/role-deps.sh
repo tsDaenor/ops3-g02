@@ -71,10 +71,13 @@ install_role_git() {
   local repo="https://github.com/${owner}/ansible-role-${role}"
 
   if is_valid_url "${repo}"; then
-    git clone "${repo}" "${roles_path}/${owner}.${role}"
+    git clone --config core.autocrlf=input \
+      "${repo}" \
+      "${roles_path}/${owner}.${role}"
   else
   # If that fails, try https://github.com/OWNER/ansible-ROLE
-    git clone "https://github.com/${owner}/ansible-${role}" \
+    git clone --config core.autocrlf=input \
+      "https://github.com/${owner}/ansible-${role}" \
       "${roles_path}/${owner}.${role}"
   fi
 }
@@ -94,4 +97,3 @@ for dep in ${dependencies}; do
     echo "+ Skipping ${dep}, seems to be installed already"
   fi
 done
-

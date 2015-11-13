@@ -1,1 +1,1 @@
-%JMETER_PATH%\bin\jmeter.bat single-user-test.properties -t single-user.jmx
+..\apache-jmeter-2.13\bin\jmeter.bat single-user-test.properties -t single-user.jmx
