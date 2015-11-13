@@ -1,4 +1,4 @@
-# Handleiding: Monitoring server with Collectd and Graphite.
+# Handleiding: Monitoring server met Collectd en Graphite.
 
 Deze handleiding stelt u in staat om, vertrekkende van deze repository, zelf een monitoring server op te zetten.  
 De VM bevat Centos 7 met Apache, Mariadb, Collectd en Graphite, inclusief hun dependencies.  
