@@ -88,7 +88,7 @@ Configuratie van Collectd:
 | `collectd_timeout`       | 2       | Consider a value list "missing" when no update has been received for this number of iterations |
 | `collectd_web_enabled`   | true    | Specifies whether `collectd-web` should be enabled on the server.                              |
 | `collectd_write_threads` | 5       | Number of threads to start for dispatching value lists to write plugins.                       |
-| `collectd_graphite_addr` | 192.0.3.51 | The URL of the graphite web-interface. |
+| `collectd_graphite_addr` | 192.0.3.51 | The IP address of the Graphite server. |
 | `collectd_graphite_port` | 2003 | The port used to send data to the Graphite service. |
 
 
