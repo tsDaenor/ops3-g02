@@ -222,6 +222,47 @@ Install-WindowsFeature –Name AD-Domain-Services, DNS -IncludeManagementTools �
 | Perform the initial synchronization (only syncs categories) | $mySubs = $myWsus.GetSubscription() $mySubs.StartSynchronizationForCategoryOnly() |
 | Get a report on the synchronization status | $mySubs.GetSynchronizationProgress()  $mySubs.GetSynchronizationStatus()   $mySubs.GetLastSynchronizationInfo() |
 
+#### 23. Creating computer groups
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Create the computer group | $myWsus = Get-WsusServer |
+| | $myWsus.CreateComputerTargetGroup("Domain Controllers") |
+| Add clients to the computer group | Get-WsusComputer -NameIncludes corpdc \| ` Add-WsusComputer -TargetGroupName "Domain Controllers" |
+| List the clients in the computer group | $myGroup = $myWsus.GetComputerTargetGroups() \| \` Where-Object Name -eq "Domain Controllers" Get-WsusComputer \| \` Where-Object ComputerTargetGroupIDs -Contains $myGroup.Id |
+
+#### 24. Configuring WSUS to inventory clients
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Configure the update server to collect the inventory | $wuConfig = $myWsus.GetConfiguration() |
+| | $wuConfig.CollectClientInventory = $true |
+| | $wuConfig.Save() |
+
+#### 25. Setting up and sharing printers
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Install the print server | Add-WindowsFeature Print-Server –IncludeManagementTools |
+| Create the printer port | Add-PrinterPort -Name Accounting_HP -PrinterHostAddress "10.0.0.200" |
+| Add the print driver | Add-PrinterDriver -Name "HP LaserJet 9000 PCL6 Class Driver" |
+| Add the printer | Add-Printer -Name "Accounting HP" -DriverName "HP LaserJet 9000 PCL6 Class Driver" -PortName Accounting_HP |
+| Share the printer | Set-Printer -Name "Accounting HP" -Shared $true -Published $true |
+| Review the printers to confirm the process | Get-Printer \| Format-Table -AutoSize |
+
+#### 26. Testing if a server is responding
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Ping a single host | Test-Connection -ComputerName corpdc1 |
+| Ping multiple hosts | zie Scripts |
+
+
+
+
+
+
+
 
 
 

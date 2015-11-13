@@ -106,3 +106,28 @@ foreach ($myDir in $logDirs){
   Get-ChildItem -Path $myDir -Recurse | Where-Object LastWriteTime -lt `  
   (Get-Date).AddDays($numDays) | Remove-Item }  
 ```
+
+##### Ping multiple hosts
+
+```
+Workflow Ping-Host ([string[]] $targets) 
+{
+  ForEach -Parallel ($target in $targets)
+  {        
+    If (Test-Connection -ComputerName $target -Count 2 -Quiet)            
+    {
+      "$target is alive"            
+    } Else {                
+        "$target is down"             
+    }    
+  } 
+} 
+Ping-Host 10.10.10.10, 10.10.10.11
+```
+
+
+
+
+
+
+
