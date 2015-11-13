@@ -222,6 +222,11 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 | Perform the initial synchronization (only syncs categories) | $mySubs = $myWsus.GetSubscription() $mySubs.StartSynchronizationForCategoryOnly() |
 | Get a report on the synchronization status | $mySubs.GetSynchronizationProgress()  $mySubs.GetSynchronizationStatus()   $mySubs.GetLastSynchronizationInfo() |
 
+#### 23. Creating computer groups
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Create the computer group | $myWsus = Get-WsusServer   $myWsus.CreateComputerTargetGroup("Domain Controllers") |
 
 
 
