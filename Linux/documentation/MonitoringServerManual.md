@@ -1,4 +1,4 @@
-## Handleiding: Monitoring server with Collectd and Graphite.
+# Handleiding: Monitoring server with Collectd and Graphite.
 
 Deze handleiding stelt u in staat om, vertrekkende van deze repository, zelf een monitoring server op te zetten.  
 De VM bevat Centos 7 met Apache, Mariadb, Collectd en Graphite, inclusief hun dependencies.  
@@ -9,7 +9,7 @@ Daarbij zal ook de apache service die draait op de LAMP stack worden gemonitord.
 De graphite pagina is toegankelijk via `192.0.3.51` en de collectd web-interface via `192.0.3.51/collectd/`  
 Inloggen in het graphite dashboard kan met  `username: admin, password: admin`. 
 
-### Vereisten:
+## Vereisten:
 
 Om deze monitoring server op te zetten, heeft u volgende software nodig:
 * [Git](https://git-scm.com/downloads)
@@ -17,9 +17,9 @@ Om deze monitoring server op te zetten, heeft u volgende software nodig:
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Ansible](http://docs.ansible.com/intro_installation.html)
 
-### Installatie:
+## Installatie:
 
-#### 1. Clonen van repository.
+### 1. Clonen van repository.
 
 Open Git Bash en ga naar de gewenste directory.
 Voer daarna volgend commando uit om de repository lokaal te clonen.
@@ -28,7 +28,7 @@ Voer daarna volgend commando uit om de repository lokaal te clonen.
 $ git clone --config core.autocrlf=input https://github.com/HoGentTIN/ops3-g02.git
 ```
 
-#### 2. De VM opstarten met Vagrant
+### 2. De VM opstarten met Vagrant
 
 Wanneer de repository succesvol lokaal gekloond is, moet u naar de map 'Linux' navigeren waarna u met Vagrant de virtuele machine opstarten.
 Dit doet u met behulp van volgende commando's:
@@ -39,7 +39,7 @@ $ vagrant up
 ```
 Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het bestand dat een fout geeft in UNIX-indeling staat.
 
-#### 3. Persoonlijke configuratie
+### 3. Persoonlijke configuratie
 
 Configuratie van de database
 ------------------
@@ -77,6 +77,7 @@ Configuratie van de Apache webservice:
 | `httpd_scripting`               | -                                          | Allowed values: `php`                                                                 |
 
 Configuratie van Collectd:
+------------------
 
 | Variable                 | Default | Comments (type)                                                                                |
 | :---                     | :---    | :---                                                                                           |
