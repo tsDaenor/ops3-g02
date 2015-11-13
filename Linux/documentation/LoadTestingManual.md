@@ -27,6 +27,15 @@ alles onder het stuk test plan is het complete script.
 
 ###Load tests
 
+#####data validation
+
+* Download Time below 0.1 s : User feels that the system is reacting instantaneously.
+* Download Time below 1.0 s : User experiences a slight delay but he is still focused on the current website.
+* Download Time below 10 s : This is the maximum time a user keeps focused on a website, but his attention might already be distracted.
+* Download Time above 10 s : User is most likely distracted from the current website and looses interest.
+
+
+
 #####Realistische load (gemiddeld gebruik)
 
 * gemiddelde aantal paginas per bezoek: 7
