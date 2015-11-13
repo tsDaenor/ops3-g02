@@ -32,7 +32,7 @@ Wanneer de repository succesvol lokaal gekloond is, moet u naar de map 'Linux' n
 Dit doet u met behulp van volgende commando's:
 
 ```ShellSession
-$ cd /Linux/
+$ cd Linux
 $ vagrant up
 ```
 Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het bestand dat een fout geeft in UNIX-indeling staat.
