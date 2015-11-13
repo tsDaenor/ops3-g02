@@ -39,7 +39,6 @@ $ vagrant up
 ```
 Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het bestand dat een fout geeft in UNIX-indeling staat.
 
-### 3. Persoonlijke configuratie
 
 Configuratie van de database
 ------------------
