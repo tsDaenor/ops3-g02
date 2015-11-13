@@ -257,6 +257,32 @@ Install-WindowsFeature â€“Name AD-Domain-Services, DNS -IncludeManagementTools â
 | Ping a single host | Test-Connection -ComputerName corpdc1 |
 | Ping multiple hosts | zie Scripts |
 
+#### 27. Using troubleshooting packs
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| List the available packs | Get-ChildItem C:\Windows\diagnostics\system |
+| Start the troubleshooting pack | Invoke-TroubleshootingPack \` (Get-TroubleshootingPack C:\Windows\diagnostics\system\networking) |
+| Answer the prompts as necessary | |
+| Create an answer file for the troubleshooting pack | Get-TroubleshootingPack C:\Windows\diagnostics\system\networking \` -AnswerFile c:\temp\answer.xml |
+| Execute the troubleshooting pack using the answer file | Invoke-TroubleshootingPack \` (Get-TroubleshootingPack C:\Windows\diagnostics\system\Networking) \` -AnswerFile c:\temp\answer.xml |
+
+#### 28. Reading performance counters
+
+|  Gebeurtenis | Commando  |
+| :---     | :--- |
+| Read the base performance counters | Get-Counter |
+| Retrieve the multiple performance counter samples | Get-Counter -Counter "\Processor(_Total)\\% Processor Time" \` -MaxSamples 4 -SampleInterval 10 |
+| Read the counters on multiple computers | zie Scripts |
+
+
+
+
+
+
+
+
+
 
 
 
