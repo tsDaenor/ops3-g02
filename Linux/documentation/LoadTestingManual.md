@@ -47,9 +47,3 @@ alles onder het stuk test plan is het complete script.
 * gemiddelde aantal paginas per bezoek: 3
 * sessies/uur: 100000
 * sessie duratie: 3min
-
-#####page bash
-
-* gemiddelde aantal paginas per bezoek: 1
-* sessies/uur: 250000
-* sessie duratie: 1min
