@@ -1,42 +1,48 @@
 ## Handleiding: Load testing
 
-Jakob Nielsen suggests the following views (from "Website Usability" by J.Nielsen):
+gebruik apache jmeter
 
-Download Time below 0.1 s : User feels that the system is reacting instantaneously.
-Download Time below 1.0 s : User experiences a slight delay but he is still focused on the current website.
-Download Time below 10 s : This is the maximum time a user keeps focused on a website, but his attention might already be distracted.
-Download Time above 10 s : User is most likely distracted from the current website and looses interest.
+alles onder het stuk test plan is het complete script.
 
-Performance-Tests: Are used to test each part of the webserver or the web application to find out what parts of the website are slow and how you can make them faster. Think of it as testing of single webpages/scripts.
-Webserver Stress Tool supports this type of test by the ability to running some 20-40 simultaneous requests on one url and recording the average time until the requests are answered. By changing the programming code you will be able to find the points you have to take care of to gain more website performance. Usually this type of test is run without requesting all the images etc. in a webpage to get more exact results about the script processing
-Load-Tests : Are done by testing the website using the load that you expect to have on your site. This is something like a real world test of the website. 
-First you have to define the maximum request times you want the customers to experience, this is done from the business and usability point of view, not from a technical point of view. At this point you need to calculate the impact of a slow website on your company sales and support costs.
-Then you have to calculate the anticipated load and load pattern for your website (see next section for details on load calculation!) which you then simulate using Webserver Stress Tool. 
-At the end you compare the test results with the requests times you wanted to achieve. You know you have some work to do when requests take longer then time out or even generate error messages!
-Stress-Tests: Are simulated brute force attacks with excessive load on your webserver. In the real world situations like this can be created by a massive spike of users - far above the normale usage - e.g. caused by a large referrer (imagine your website being mentioned on national TV). 
-The goals of stress tests are to learn under what load your server generates errors, whether it will come back online after such a massive spike at all or crash and when it will come back online.
+hieronder vind je 3 types acties.
 
-This is probably the trickiest question in conducting performance tests on websites.
+* managers & defaults
+  deze zorgen ervoor dat u bijvoorbeeld u cookies goed geinstalleerd staan en kunnen met de defaults er ook voor zorgen dat al u basisinstellingen juist staan bvb. server en poort
+    * cache manager: hiermee kan je de cache clearen elke iteratie, hiermee boots je elke iteratie een nieuwe user na
+    * cookie manager: deze neemt alles in verband met cookies voor zijn rekening
+    * http request defaults: alle http requests in het test plan zullen deze default waarden krijgen
+* thread groups
+  thread groups bootsen users na, in de thread group tab zelf kunt u instellen hoeveel users u wil (threads), hoeveel keer het herhaalt moet worden (loop count) en hoeveel seconden het duurd voor alle users gedeployed zijn (ramp up period) deze ramp up period is lineair7
+  binnen de threads vinden we nog:
+    * http requests: bootsen een pagina laden na
+    * constant timer: hiermee kunnen we delay tussen het uitvoeren van vershillende stappen
+    * loop controller: loops invoeren om de stappen die niet veranderen te herhalen
+* listeners
+  deze geven u data weer in de format dat je wil.
+    * results tree: geeft elke request weer en welk antwoord er op gekomen is, dit word vooral gebruikt om te debuggen
+    * graph results: geeft een grafiek weer van de load time (met gemiddelde, min, max en mediaan) maar is niet zo user friendly
+    * results in table: geeft de data waarmee de grafiek is opgebouwd weer in tabelvorm
+    * summary report: geeft data weer voor elke test
 
-First, remember that there is a difference between users, transactions, pageviews and hits:
 
-One user creates several (trans-)actions (e.g. visit Homepage, search product, view product's details, buy a product etc.)
-One (trans-)action creates several pageviews (e.g. add products to shopping cart, go to checkout, enter creditcard etc.)
-One pageview creates several hits (e.g. framesets, images, applets etc. of one webpage)
-If you already have your website online it is a good start to use a good logfileanalyzer on your logfiles. You can find out how many people access the site per day and per hour, what pages/scripts are used how often etc.
 
-If you are working on a new website you have to find the numbers and pattern yourself. One way to define the load pattern could be:
 
-Step 1: From a business point of view come up with the target number of users.
-Step 2: Define a couple of different "model users" (e.g. teen kid, mature business customer, senior citizen etc.) and surf from their point of view through the website. Track the webpages they access and gather these stats.
-At the end you should have a list of URLs and their frequency of use.
+Load tests
 
-There is a difference between the number of users using your website at one time and users sending simultaneous requests to your website!
+Realistische load (gemiddeld gebruik)
 
-If you have 200 simultaneous users clicking a link every 20 seconds you have 600 clicks per minute (3 per user per minute) or 10 simultaneous users per second. This number would be the number you simulate with Webserver Stress Tool.
+* gemiddelde aantal paginas per bezoek: 7
+* sessies/uur: 10000
+* sessie duratie: 6min 30sec
 
-Remember to take into account that additionally to the average load of your website there could be spikes in usage generated by marketing activities (e.g. newsletters, banners, TV commercials etc.) or simply by seasonal situations (e.g. Valentines Day for a flower shop website).
+Realistische load (hoog gebruik)
 
-Now feed this data into Webserver Stress Tool and hit "Start Test" and keep your fingers crossed!
+* gemiddelde aantal paginas per bezoek: 3
+* sessies/uur: 100000
+* sessie duratie: 3min
 
-https://www.keynote.com/resources/white-papers/science-web-site-load-testing
+page bash
+
+* gemiddelde aantal paginas per bezoek: 1
+* sessies/uur: 250000
+* sessie duratie: 1min
