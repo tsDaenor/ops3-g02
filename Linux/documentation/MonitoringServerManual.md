@@ -23,7 +23,7 @@ Open Git Bash en ga naar de gewenste directory.
 Voer daarna volgend commando uit om de repository lokaal te clonen.
 
 ```ShellSession
-$ git clone --config core.autocrlf=false https://github.com/HoGentTIN/ops3-g02.git
+$ git clone --config core.autocrlf=input https://github.com/HoGentTIN/ops3-g02.git
 ```
 
 #### 2. De VM opstarten met Vagrant
