@@ -2,8 +2,10 @@
 
 Deze handleiding stelt u in staat om, vertrekkende van deze repository, zelf een monitoring server op te zetten.  
 De VM bevat Centos 7 met Apache, Mariadb, Collectd en Graphite, inclusief hun dependencies.  
+
 Collectd zal statistieken verzamelen over de load, interfaces, cpu en memory van de servers in het netwerk.  
 Daarbij zal ook de apache service die draait op de LAMP stack worden gemonitord.   
+
 De graphite pagina is toegankelijk via 192.0.3.51 en de collectd web-interface via 192.0.3.51/collectd/  
 Inloggen in het graphite dashboard kan met usernam ´admin´ en ´wachtwoord´ admin.  
 
