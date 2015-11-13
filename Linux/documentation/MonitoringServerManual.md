@@ -6,8 +6,8 @@ De VM bevat Centos 7 met Apache, Mariadb, Collectd en Graphite, inclusief hun de
 Collectd zal statistieken verzamelen over de load, interfaces, cpu en memory van de servers in het netwerk.  
 Daarbij zal ook de apache service die draait op de LAMP stack worden gemonitord.   
 
-De graphite pagina is toegankelijk via 192.0.3.51 en de collectd web-interface via 192.0.3.51/collectd/  
-Inloggen in het graphite dashboard kan met usernam ´admin´ en ´wachtwoord´ admin.  
+De graphite pagina is toegankelijk via `192.0.3.51` en de collectd web-interface via `192.0.3.51/collectd/`  
+Inloggen in het graphite dashboard kan met  `username: admin, password: admin`. 
 
 ### Vereisten:
 
@@ -88,5 +88,37 @@ Configuratie van Collectd:
 | `collectd_write_threads` | 5       | Number of threads to start for dispatching value lists to write plugins.                       |
 | `collectd_graphite_addr` | 192.0.3.51 | The URL of the graphite web-interface. |
 | `collectd_graphite_port` | 2003 | The port used to send data to the Graphite service. |
+
+
+Configuratie van Graphite:
+
+`defaults/main.yml`
+
+| Variable           | Default Value | Description                        |
+| -------------- | ------------- | -----------------------------------|
+| graphite_log_rendering_performance | no | logs rendering performance |
+| graphite_log_cache_performance | no   | logs cache performance |
+| graphite_log_metric_access| no       | log metric access
+| graphite_timezone |  CET   | timezone for graphite
+
+`vars/[Debian, RedHat].yml`
+
+| Name           | Description      |
+|----------------|------------------|
+| apache_service | name of apache service |
+|carbon_local_data_dir | carbon's data dir |
+| packages       | package dependencies for graphite |
+| carbon_service | name of carbon service |
+| carbon_storage_dir | carbon storage directory |
+| carbon_user | the owner of the carbon process|
+| graphite_conf | graphite configuration directory |
+| graphite_content_dir | where graphite static content is stored |
+| graphite_index_file | path to graphtie's index file |
+| graphite_log_dir | path to graphite's logs |
+| graphite_python | path to graphite's python library|
+| graphite_storage_dir |  path to graphite's storage dir |
+| graphite_user | username of account running graphite |
+| graphite_var | path to graphite's var directory |
+| graphite_whishper_dir| path to graphite's whisper dir |
 
 
