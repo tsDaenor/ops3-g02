@@ -47,3 +47,4 @@ for opt, opt_arg in opts:
         host_info(opt_arg)
     else:
         assert False, "unhandled option: %s" % opt
+
