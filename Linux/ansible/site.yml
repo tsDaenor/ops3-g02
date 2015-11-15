@@ -11,7 +11,7 @@
   vars:
     mariadb_databases:
       - wp_db
-    mariadb_root_password: fogMeHud8
+    mariadb_root_password: root
     mariadb_users:
       - name: wp_user
         password: CorkIgWac

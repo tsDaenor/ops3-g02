@@ -56,6 +56,16 @@ LoadPlugin cpu
 LoadPlugin interface
 LoadPlugin load
 LoadPlugin memory
+LoadPlugin mysql
+
+<Plugin mysql>
+  <Database "{{ mariadb_databases }}">
+    Host "127.0.0.1"
+    User "collectd"
+    Password "collectd"
+    Port 3306
+  </Database>
+</Plugin>
 
 LoadPlugin apache
 

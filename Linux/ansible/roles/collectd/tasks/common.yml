@@ -54,3 +54,6 @@
   
 - name: Configure SELinux to allow collectd TCP connections
   seboolean: name=collectd_tcp_network_connect state=yes persistent=yes
+  
+- name: Create user for collectd-mysql plugin and set permissions
+  mysql_user: name=collectd password=collectd priv=*.*:"REPLICATION CLIENT" state=present
