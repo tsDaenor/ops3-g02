@@ -243,4 +243,23 @@ Add-DnsServerZoneDelegation -Name TreyResearch.net `
                             -NameServer trey-engdc-12.engineering.treyresearch.net `
                             -PassThru
 ```
+The 'DnsServerZoneDelegation' group of commands includes the verbs Add, Get, remove and Set. Use the `Set-DnsServerZoneDelegation`command to change the IP address or addresses to which to delegate the zone. This doesn't add them but replaces them. For example:
+```
+Set-DnsServerZoneDelegation `
+             -Name TreyResearch.net `
+             -ChildZoneName Engineering `
+             -IPAddress 192.168.10.13,2001:db8::d `
+             -NameServer trey-engdc-13.engineering.treyresearch.net `
+             -PassThru
+```
+
+## Manage DNS records
+DNS servers also provide information that other services and servers need to know which server hosts a particular service.
+each of these services is designated by a specific type of DNS record.
+Windows supports a wide variety of DNS records:
+
+| Value |    |
+| --- | --- |
+| A | An IPv4 host address record. The record is a forward lookup that translates the host name into an IPv4 address. |
+| AAAA | An IPv6
 
