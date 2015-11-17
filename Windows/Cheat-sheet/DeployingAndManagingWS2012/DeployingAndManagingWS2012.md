@@ -127,3 +127,34 @@ Add-DnsServerPrimaryZone -Name 'tailspintoys.com' `
  
 #### Change the settings of a primary zone
  To change the settings you use the 'Set-DnsServerPrimaryZone' command.
+ You can see the parameters by using `get-help Set-DnsServerprimaryZone`.
+ For example:
+ ```
+ Set-DnsServerPrimaryZone -Name 'TailspinToys.com' 
+                         -Notify 'NotifyServers' 
+                         -NotifyServers "192.168.10.201","192.168.10.202" 
+                         -PassThru
+```
+
+#### Export a primary zone
+You can easily export a primary zone with the `Export-DnsServerZone`command.
+An example to export an IPv6 reverse lookup zone:
+```
+Export-DnsServerZone -Name '0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa' 
+                     -Filename '0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.dns'
+```
+
+### Manage secondary zones
+
+#### Create secondary zones
+The `Add-DnsServerSecondaryZone`is used to create secondary zones.
+For example:
+```
+Add-DnsServerSecondaryZone –Name 0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa `
+                           -ZoneFile "0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.dns" `
+                           -LoadExisting `
+                           -MasterServers 192.168.10.2,2001:db8:0:10::2 `
+                           -PassThru
+```
+
+#### Change the settings of a secondary zone
