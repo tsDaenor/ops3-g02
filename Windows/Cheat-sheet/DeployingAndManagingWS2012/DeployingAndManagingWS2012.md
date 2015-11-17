@@ -202,7 +202,7 @@ Add-DnsServerStubZone -Name TailspinToys.com `
                       -PassThru
 ```
 
-### Configure coditional forwards
+### Configure conditional forwards
 
 Use conditional forwards to specify where to forward DNS request for a specific DNs domain. When you have multiple internal DNS domains, you might need to resolve DNS names from another internal domain. You could maintain a stub zone for that domain, but you can also use conditional forwards. For example if your DNS domain is TailSpinToys.com and you want to set a conditional forward for treyresearch.net:
 ```
@@ -219,11 +219,28 @@ Add-DnsServerConditionalForwarderZone -Name treyresearch.net `
 | ForwarderTimeOut | If a server hasn't answered in 5 seconds, the next server is queried. |
 | Recursion | If this parameter is specified false and if none of the master servers specified answers the resuest, the DNS lookup fails. |
 
-To change the settings of an existing DNS conditional forward, use the `Set-DnsServerConditionalForwarderZone`command. For example, to change the conditional forward for TreyResearch.net to specify new master servers:
+#### Change settings of an existing DNS conditional forward
+
+Use the `Set-DnsServerConditionalForwarderZone`command. For example, to change the conditional forward for TreyResearch.net to specify new master servers:
 ```
 Add-DnsServerConditionalForwarderZone -Name treyresearch.net `
                                       -MasterServers 192.168.10.3,2001:db8::10:3 `
                                       -PassThru
 ```
-Conditional forwards are stored as zones. To remove a conditional forward, use the `Remove-DnsServerZone`command.
+Conditional forwards are stored as zones. 
+
+#### Remove a conditional forward
+
+Use the `Remove-DnsServerZone`command.
+
+### Manage zone delegation
+With this you can divide a large zone into smaller subzones to distribute the load an improve performance.
+You can for example delegate a subzone to a different DNS server to distribute the load and administrative overhead. For example, you can add a delegation to a subzone to a server:
+```
+Add-DnsServerZoneDelegation -Name TreyResearch.net `
+                            -ChildZoneName Engineering `
+                            -IPAddress 192.168.10.12,2001:db8::c `
+                            -NameServer trey-engdc-12.engineering.treyresearch.net `
+                            -PassThru
+```
 
