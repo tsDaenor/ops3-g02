@@ -3,7 +3,7 @@
 ##### Configuring DHCP scopes
 
 ###### This Manual assumes a server, networking and domain configuration.
-###### For this manual you need your computer name, you can check it with the command `Get-Content ENV:Computername` or you can change it by using `Rename-Computer -NewName MyCoreBox -restart`
+###### For this manual you need your computer name, you can check it with the command `Get-Content ENV:Computername` or you can change it by using `Rename-Computer -NewName DC1 -restart`
 
 * Install DHCP and management tools
   - `Get-WindowsFeature | Where-Object Name -like *dhcp*`  
