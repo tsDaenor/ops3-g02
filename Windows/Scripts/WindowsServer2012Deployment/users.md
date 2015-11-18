@@ -1,4 +1,5 @@
-# Export users from your existing server to a .csv file
+# Manage users
+## Export users from your existing server to a .csv file
 This script can be used to export all your existing users. You can add more attributes as you wish. 
 [Source](http://www.morgantechspace.com/2014/11/Export-AD-Users-to-CSV-using-Powershell.html#exportll)
 
@@ -55,4 +56,4 @@ PROCESS #This is where the script executes
 }
 ```
 
-# Import users from an existing .csv file
+## Import users from an existing .csv file
