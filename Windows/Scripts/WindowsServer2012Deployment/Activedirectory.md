@@ -1,11 +1,11 @@
-#### Script: Installeren Active Directory
+#### Installeren Active Directory
 
-#### Wat wordt er gedaan in dit script?
+##### Wat wordt er gedaan in dit script?
 
 - Installatie Active Directory Domain Services
 - Installatie DNS
 
-#### Script: sla dit op als activedirectory.ps1
+##### Script: sla dit op als activedirectory.ps1
 
 ```
 Install-WindowsFeature AD-Domain-Services, DNS – IncludeManagementTools
