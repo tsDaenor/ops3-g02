@@ -74,36 +74,41 @@ Pipe the results of a cmdlet to another cmdlet.
 Connects cmdlets to produce better results.  
 Line continuation!  
 
-* Exporting/importing CSV
+### Exporting/importing CSV
 
-```Get-process | export-csv c:\proc.csv  
-import-csv c:\proc.csv
-```
+	Get-process | export-csv c:\proc.csv  
+	
+	import-csv c:\proc.csv
+
     
-* Exporting/importing XML
+### Exporting/importing XML
 
-```Get-process | Export-Clixml c:\proc.xml
- notepad 
- Compare-Object -ReferenceObject (Import-Clixml c:\proc.xml) -DifferenceObject (Get-Process) -Property name
-```
+	Get-process | Export-Clixml c:\proc.xml
+ 
+ 	notepad
+ 	
+ 	Compare-Object -ReferenceObject (Import-Clixml c:\proc.xml) -DifferenceObject (Get-Process) -Property name
+
     
-* Other files and printers: **out-***
+### Other files and printers: "out-*"
 
-```get-service | out-file -FilePath c:\test.txt
-get-content c:\test.txt
-```
+	get-service | out-file -FilePath c:\test.txt
+
+	get-content c:\test.txt
+
   
-* Displaying information in a GUI
+### Displaying information in a GUI
  
     Get-Process | Out-GridView
     
-* Making a webpage of information
+### Making a webpage of information
 
-```get-service | convertTo-html -Property name,status | out-file c:\test.htm
-c:\test.htm
-```
+	get-service | convertTo-html -Property name,status | out-file c:\test.htm
 
-**Cmdlets that kill:**
+	c:\test.htm
+
+
+### Cmdlets that kill:
 
 Example:
 
@@ -119,7 +124,7 @@ Example:
 
     get-service -DisplayName *bi* | stop-service -whatif
 
-**Modules:**  
+### Modules:  
 
 Cmdlets ship in with the thing that needs to be managed -> modules  
 A module contains cmdlets and providers.  
@@ -160,8 +165,7 @@ Each row is the object itself and each column reflects the properties
 
 **Example with previous chapters implemented:** 
 
-```Get-EventLog -LogName System -Newest 5 | select -Property EventID, TimeWritten, Message | sort -Property timewritten | convertTo-html | out-file c:\error.htm
-```
+	Get-EventLog -LogName System -Newest 5 | select -Property EventID, TimeWritten, Message | sort -Property timewritten | convertTo-html | out-file c:\error.htm
 
 ### Working with XML in powershell V3:
 **The dot syntax:**  
