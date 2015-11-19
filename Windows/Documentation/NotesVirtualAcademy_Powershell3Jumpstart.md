@@ -276,7 +276,7 @@ Find "ByValue" -> -InputObject -> works with ServiceController object so no hook
 3.  `get-adcomputer | gm`  
 Check properties of Get-ADComputer again to work with PropertyName -> "Name"  
 Check ByPropertyName  
--ComputerName -> Match BUT isn't exactly spelled the same as Name 
+-ComputerName -> Match BUT isn't exactly spelled the same as Name  
 -Name -> Match BUT it wants a service name and not a computer name  
 
 So it won't work unless the property "Name" of Get-ADComputer is changed to "ComputerName"  
