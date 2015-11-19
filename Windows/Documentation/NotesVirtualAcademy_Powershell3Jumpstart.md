@@ -356,14 +356,14 @@ Windows Server 2012: enabled by default -> cloud operating system  & it's secure
 
 ### Remote connections:  
 
-* A one-to-one connection
+**A one-to-one connection:**
 ~ a secure telnet
 
     New-PSSession -ComputerName dc  
 
 short syntax: `nsn`
 
-* A one-to-many connection 
+**A one-to-many connection:** 
 Using the same command at multiple systems at the same time
 
     invoke-command -ComputerName dc,s1,s2 {//code}
