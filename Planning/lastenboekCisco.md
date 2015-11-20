@@ -6,14 +6,26 @@
 ### Deliverables
 
 * cisco lab 2.3.2.3 configuring rapid pvst+, portfast and bpdu guard
+* cisco lab 6.2.3.8 Configuring Multiarea OSPFv2
+* cisco lab 6.2.3.9 Configuring Multiarea OSPFv3
 
 ### Deeltaken
 
 ##### cisco lab 2.3.2.3 configuring rapid pvst+, portfast and bpdu guard
 * het netwerk opzetten
 * vlans , native vlan en trunks configureren
-* rood bridge configureren en pvst+ convergence bekijken
+* root bridge configureren en pvst+ convergence bekijken
 * rapid pvst+, portfast, bpdu guard configureren en onderzoek de samenwerking
+
+##### cisco lab 6.2.3.8 Configuring Multiarea OSPFv2
+* netwerk opzetten en basis configuratie toepassen
+* multiarea OSPFv2 netwerk configureren
+* configureer summary routes tussen area's
+
+##### cisco lab 6.2.3.9 Configuring Multiarea OSPFv3
+* netwerk opzetten en basis configuratie toepassen
+* multiarea OSPFv3 netwerk configureren
+* configureer summary routes tussen area's
 
 ### Kanban-bord
 
