@@ -1,0 +1,12 @@
+#####################################
+#                                   #
+#              Services             #
+#                                   #
+#####################################
+# roles/mariaDB/tasks/services.yml
+
+
+
+
+- name: start mariadb
+  service: name=mariadb state=running enabled=yes

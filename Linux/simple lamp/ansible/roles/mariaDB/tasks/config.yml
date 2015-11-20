@@ -1,0 +1,67 @@
+#####################################
+#                                   #
+#              Config               #
+#                                   #
+#####################################
+# roles/mariaDB/tasks/config.yml
+
+
+
+- name: Install config file for network settings
+  template:
+    src: etc_my.cnf.d_network.cnf.j2
+    dest: /etc/my.cnf.d/network.cnf
+  notify: restart mariadb
+  
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ mariadb_root_password }}"
+    state: present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Install ~/.my.cnf
+  template:
+    src: home_my.cnf.j2
+    dest: ~/.my.cnf
+    mode: '0600'
+
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ ansible_hostname }}"
+    password: "{{ mariadb_root_password }}"
+    state: present
+  when: ansible_hostname != 'localhost'
+
+- name: Remove the test database
+  mysql_db:
+    name: test
+    state: absent
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - localhost
+    - "{{ ansible_hostname }}"
+
+- name: Create the databases
+  mysql_db:
+    name: "{{ item }}"
+    state: present
+  with_items: mariadb_databases
+
+- name: Create the users
+  mysql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.priv }}"
+    state: present
+  with_items: mariadb_users

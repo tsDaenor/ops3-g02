@@ -1,0 +1,67 @@
+# site.yml
+---
+#- hosts: linuxlamp
+#  sudo: yes
+#  roles:
+#    - bertvv.el7
+#    - www
+#    - mariadb
+#    - wordpress
+#    - collectd
+#  vars:
+#    mariadb_databases:
+#      - wp_db
+#    mariadb_root_password: root
+#    mariadb_users:
+#      - name: wp_user
+#        password: CorkIgWac
+#        priv: "wp_db.*:ALL,GRANT"
+#    wordpress_database: wp_db
+#    wordpress_user: wp_user
+#    wordpress_password: CorkIgWac
+#    wordpress_home_url: "http://192.0.3.50/wordpress"
+#    wordpress_site_title: Test Site
+#    wordpress_admin_user: admin
+#    wordpress_admin_user_pass: admin
+#    wordpress_admin_email: toon.lamberigts@gmail.com
+#    remote_wordpress_dir: /usr/share/wordpress
+#    remote_deploy_user: vagrant
+#    mariadb_packages:
+#      - mariadb
+#      - mariadb-server
+#      - MySQL-python
+#    collectd_server: 192.0.3.51
+- hosts: database
+  sudo: yes
+  roles: 
+    - bertvv.el7 
+    - mariadb
+    - collectd
+  vars:
+    mariadb_databases:
+      - wp_db
+    mariadb_root_password: root
+    mariadb_users:
+      - name: wp_user
+        password: CorkIgWac
+        priv: "wp_db.*:ALL,GRANT"
+    mariadb_bind_address: 192.0.3.50
+ 
+- hosts: monitoring
+  sudo: yes
+  roles:
+    - bertvv.el7
+    - www
+    - mariadb
+    - collectd
+    - graphite
+   
+  vars:
+    mariadb_databases:
+      - graph_db
+    mariadb_root_password: root
+    mariadb_users:
+      - name: graph_user
+        password: graphite
+        priv: "graph_db.*:ALL,GRANT"
+

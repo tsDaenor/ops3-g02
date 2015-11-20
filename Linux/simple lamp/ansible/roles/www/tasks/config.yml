@@ -1,0 +1,37 @@
+#####################################
+#                                   #
+#              Config               #
+#                                   #
+#####################################
+# roles/www/tasks/config.yml
+
+
+
+- name: Installing Hello World PHP script
+  copy: src=index.php dest=/var/www/html/index.php mode=0664
+  
+- name: Installing main configuration file
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    setype: httpd_config_t
+    mode: '0644'
+  notify: restart httpd
+  tags: httpd
+
+- name: Installing mod_ssl configuration file
+  template:
+    src: ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    setype: httpd_config_t
+    mode: '0644'
+  notify: restart httpd
+  tags: httpd
+
+- name: Configure firewall
+  script: ../files/firewall.sh
+  notify: restart firewalld  
