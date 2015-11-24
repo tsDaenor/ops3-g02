@@ -66,6 +66,9 @@
 
 ### Toon Lamberigts
 * boek windows powershell
+* testing monitoring server
+* packettracer
+* opzetten multi-tier omgeving
 
 ## Waar hebben jullie nog problemen mee?
 
