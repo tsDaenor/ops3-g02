@@ -7,7 +7,7 @@
 # Variables
 sut=192.0.3.50
 mariadb_user=wp_user
-mariadb_root_password=fogMeHud8
+mariadb_root_password=root
 wordpress_database=wp_db
 wordpress_user=wp_user
 wordpress_password=CorkIgWac
