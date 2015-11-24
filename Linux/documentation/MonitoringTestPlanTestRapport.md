@@ -4,11 +4,11 @@
 #### De requirements voor de monitoring server zijn:
 
 - De nodige packages moeten geïnstalleerd zijn
-	- httpd
+  - httpd
   - mariadb
-	- mariadb-server
+  - mariadb-server
   - MYSQL-python
-	- php
+  - php
   - collectd
   - libsemanage-python
   - collectd-apache
@@ -76,6 +76,8 @@ De uitvoer van het testscript:
  ✓ MariaDB should not have a test database
  ✓ MariaDB should not have anonymous users
  ✓ The Wordpress site should be visible under http://192.0.3.50/wordpress/
+ 
+ 22 tests, 0 failures
  ```
 
 #### Monitoring client:
