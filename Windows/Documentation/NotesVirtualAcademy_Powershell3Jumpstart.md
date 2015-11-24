@@ -4,7 +4,7 @@
 1. [Don't fear the shell] (#1-dont-fear-the-shell)
 2. [The help system] (#2-the-help-system)
 3. [The pipeline: getting connected & extending the shell] (#3-the-pipeline-getting-connected--extending-the-shell)
-4. [Object for the Adminl] (#4-object-for-the-admin)
+4. [Object for the Admin] (#4-object-for-the-admin)
 5. [The Pipeline: Deeper] (#T5-the-pipeline-deeper)
 6. [The PowerShell in the shell: remoting] (#6-the-powershell-in-the-shell-remoting)
 7. [Getting prepared for automation] (#7-getting-prepared-for-automation)
