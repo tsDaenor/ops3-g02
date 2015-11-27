@@ -30,7 +30,6 @@
 ####Toggle
 
 ![alt tasks](images/week10/tasks1.PNG)
-![alt tasks](images/week10/tasks2.PNG)
 
 ### Bram Martens
 
