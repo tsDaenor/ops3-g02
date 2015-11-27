@@ -1,0 +1,43 @@
+#####################################
+#                                   #
+#               Install             #
+#                                   #
+#####################################
+# roles/Graphite/tasks/install.yml
+
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  
+- name: setup custom repo
+  apt: pkg=python-pycurl state=present
+  when: ansible_os_family  == "Debian"
+  
+- apt_repository: repo='ppa:jmartin-1/tools'
+  when: ansible_os_family  == "Debian"
+
+- name: enable carbon
+  copy: dest=/etc/default/graphite-carbon content='CARBON_CACHE_ENABLED=true'
+  when: ansible_os_family  == "Debian"
+
+- name: install graphite and deps
+  apt: name={{ item }} state=present
+  with_items: packages
+  when: ansible_os_family  == "Debian"
+
+- name: setup apache
+  copy: src=apache2-graphite.conf dest=/etc/apache2/sites-available/default
+  notify: restart apache
+  when: ansible_os_family  == "Debian"
+
+- name: configure wsgi
+  file: path=/etc/apache2/wsgi state=directory
+  when: ansible_os_family  == "Debian"
+  
+- name: fetch EPEL repository
+  yum: name=http://mirror.pnl.gov/epel/6/i386/epel-release-6-8.noarch.rpm
+  when: ansible_os_family  == "RedHat"
+
+- name: install graphite and deps
+  yum: name="{{ item }}" state=present
+  with_items: packages
+  when: ansible_os_family  == "RedHat"
