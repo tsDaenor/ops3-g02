@@ -1,5 +1,16 @@
 # Getting Started with PowerShell 3.0 Jump Start
 
+## Table of contents:
+1. [Don't fear the shell] (#1-dont-fear-the-shell)
+2. [The help system] (#2-the-help-system)
+3. [The pipeline: getting connected & extending the shell] (#3-the-pipeline-getting-connected--extending-the-shell)
+4. [Object for the Admin] (#4-object-for-the-admin)
+5. [The Pipeline: Deeper] (#5-the-pipeline-deeper)
+6. [The PowerShell in the shell: remoting] (#6-the-powershell-in-the-shell-remoting)
+7. [Getting prepared for automation] (#7-getting-prepared-for-automation)
+8. [Automation in scale - Remoting] (#8-automation-in-scale---remoting)
+9. [Introducing scripting and toolmaking] (#9-introducing-scripting-and-toolmaking)
+
 ## 1. Don't fear the shell
 
 Doing once in a blue moon things  -> GUI  
