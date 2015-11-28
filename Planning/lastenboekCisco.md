@@ -27,6 +27,24 @@
 * multiarea OSPFv3 netwerk configureren
 * configureer summary routes tussen area's
 
+##### cisco lab 6.2.3.10 Troubleshooting Multiarea OSPFv2 and OSPFv3
+* netwerk opzetten en configuratie laden
+* haal de fouten uit de configuratie van de layer 3 connectiviteit
+* haal de fouten uit de OSPFv2 configuratie
+* haal de fouten uit de OSPFv3 configuratie
+
+##### cisco lab 7.2.2.5 Configuring Basic EIGRP for IPv4
+* netwerk opzetten en connectiviteit verifieren
+* configuratie EIGRP routering
+* verifier EIGRP routering
+* configureer bandbreedte en passive interfaces
+
+##### cisco lab 7.4.3.5 Configuring Basic EIGRP for IPv6
+* netwerk opzetten en connectiviteit verifieren
+* configuratie EIGRP voor ipv6 routering
+* verifier EIGRP voor ipv6 routering
+* configureer bandbreedte en passive interfaces
+
 ### Kanban-bord
 
 (schermafbeeldingen van de toestand van het Kanban-bord invoegen elke week voor de samenkomst met de begeleider, tot oplevering van de opdracht)
