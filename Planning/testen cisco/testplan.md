@@ -118,7 +118,7 @@ Auteur(s) testplan:`Tomas Vercautter`
   * `show ip eigrp topology`
 * controleer protocol op elke router 
   * `show ip protocols`
-  * moet `eigrp 10 zijn`
+  * moet `eigrp 10` zijn
   * routing for networks moet kloppen
   * gigabitEthernet 0/0 moet op elke router een passive interface zijn
 * seriele interfaces moeten juiste bandbreedte hebben
