@@ -45,7 +45,7 @@
       - name: wp_user
         password: CorkIgWac
         priv: "wp_db.*:ALL,GRANT"
-    mariadb_bind_address: 192.0.3.50
+    mariadb_bind_address: 192.0.2.50
  
 - hosts: monitoring
   sudo: yes
