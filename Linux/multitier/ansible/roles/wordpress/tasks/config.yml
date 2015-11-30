@@ -11,6 +11,7 @@
 - name: Configure WordPress
   shell: /usr/local/bin/wp core config
            --path="{{ remote_wordpress_dir }}"
+           --dbhost="{{ wordpress_database_address }}"
            --dbname="{{ wordpress_database }}"
            --dbuser="{{ wordpress_user }}"
            --dbpass="{{ wordpress_password }}"

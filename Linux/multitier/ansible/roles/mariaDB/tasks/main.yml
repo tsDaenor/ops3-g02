@@ -9,3 +9,4 @@
 - include: install.yml     # Install packages
 - include: services.yml    # Start required services
 - include: config.yml      # Configuration files
+- include: security.yml    # Configure security

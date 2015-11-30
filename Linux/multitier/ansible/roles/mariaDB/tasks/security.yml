@@ -1,0 +1,9 @@
+#####################################
+#                                   #
+#              Security             #
+#                                   #
+#####################################
+# roles/mariaDB/tasks/security.yml
+ 
+- name: Configure SELinux to allow httpd network connect mysql
+  seboolean: name=httpd_can_network_connect_db state=yes persistent=yes
