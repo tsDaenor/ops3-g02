@@ -1,6 +1,9 @@
 # site.yml
 ---
-- hosts: lamp1
+- hosts: 
+    - lamp1
+    - lamp2
+    - lamp3
   sudo: yes
   roles:
     - bertvv.el7
@@ -33,6 +36,14 @@
     mariadb_users:
       - name: wp_user
         host: 192.0.2.53
+        password: wordpress
+        priv: "wp_db.*:ALL,GRANT"
+      - name: wp_user
+        host: 192.0.2.54
+        password: wordpress
+        priv: "wp_db.*:ALL,GRANT"
+      - name: wp_user
+        host: 192.0.2.55
         password: wordpress
         priv: "wp_db.*:ALL,GRANT"
     mariadb_bind_address: 192.0.2.50

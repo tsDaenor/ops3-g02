@@ -4,19 +4,12 @@
       - bind
       - bind-utils
     bind_service: named
-    bind_zone_master_server_ip: 192.0.2.10
-    bind_zone_name: "linuxlab.lan"
+    bind_zone_master_server_ip: 192.0.2.52
+    bind_zone_name: 'ops3-g02.org'
     bind_zone_networks:
       - "192.0.2"
-      - "172.16.0"
     bind_zone_name_servers:
-      - 'pu001'
-      - 'pu002'
-      
-    bind_zone_mail_servers:
-      - name: 'pu003'
-        preference: '10'
-
+      - 'dns'
     # List of IPv4 address of the network interface(s) to listen on. Set to "any"
     # to listen on all interfaces
     bind_listen_ipv4:
@@ -43,35 +36,24 @@
     bind_zone_minimum_ttl: "1D"
     
     bind_zone_hosts:
-      - name: pu001
-        ip: 192.0.2.10
-        aliases:
-        - ns1
-      - name: pu002
-        ip: 192.0.2.11
-        aliases:
-          - ns2
-      - name: pu004
+      - name: database
         ip: 192.0.2.50
-        aliases:
-          - www
-      - name: pu003
-        ip: 192.0.2.20
-        aliases:
-          - mail
-      - name: pr001
-        ip: 172.16.0.1
-        aliases:
-          - dhcp
-      - name: pr002
-        ip: 172.16.0.2
-        aliases:
-          - directory
-      - name: pr010
-        ip: 172.16.0.10
-        aliases:
-          - inside
-      - name: pr011
-        ip: 172.16.0.11
-        aliases:
-          - files
+
+
+      - name: monitoring
+        ip: 192.0.2.51
+
+      - name: dns
+        ip: 192.0.2.52
+
+        
+      - name: www
+        ip: 192.0.2.53
+        
+      # - name: www
+        # ip: 192.0.2.54
+      
+      # - name: www
+        # ip: 192.0.2.55  
+
+

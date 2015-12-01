@@ -38,6 +38,8 @@ $TTL {{ bind_zone_ttl }}
 {% endfor %}
 {% endif %}
 {% endfor %}
+                          IN  A      192.0.2.54
+                          IN  A      192.0.2.55
 {% else %}
 {{ ansible_hostname.ljust(20) }} IN A     {{ ansible_default_ipv4.address }}
 {% endif %}
