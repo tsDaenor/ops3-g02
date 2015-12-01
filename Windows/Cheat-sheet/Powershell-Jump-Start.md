@@ -8,10 +8,17 @@
 | Verander map | set-location c:\ |
 | ga naar c:\ | cd\ |
 | Geef lijst mappen | ls |
-| Wis scherm | clear of cls |
+| Geef lijst mappen | get-childitem |
+| Wis scherm | clear |
+| Wis scherm | clear-host |
 | maak map test | md test |
+| maak map test | mkdir test |
+| lijst aliasses | gal |
+| lijst aliasses | get-aliasses |
 | Help | help |
 | Start programma op | calculator |
+
+windows native commands ondersteunt
  
 ### 2. Help system
 
@@ -19,6 +26,13 @@
 | :---     | :--- |
 | update help | update-help -Force |
 | toon helppagine | get-help get-service -Online |
+| help online | -Online |
+| help full | -Full |
+| help in different window | -ShowWindow |  
+
+get-help scrollt naar het einde vs help/man geeft het -- more -- systeem
+
+'*' is your friend
 
 Handig: om te kopiëren in Powershell moet je tekst selecteren en rechts klikken, daarna op de plaats waar je wilt plakken nogmaals rechts klikken.
 
