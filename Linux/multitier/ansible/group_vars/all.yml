@@ -25,5 +25,12 @@ el7_firewall_allow_services:
 el7_firewall_allow_ports: 
   - 2003/tcp
   - 25827/udp
+  - 3306/tcp
 el7_motd: true
 collectd_server: 192.0.3.51
+wordpress_database_address: 192.0.2.50
+mariadb_packages:
+  - mariadb
+  - mariadb-server
+  - MySQL-python
+  - libsemanage-python

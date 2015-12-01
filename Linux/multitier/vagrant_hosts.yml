@@ -34,3 +34,12 @@
   
 - name: lamp1
   ip: 192.0.2.53
+  
+- name: lamp2
+  ip: 192.0.2.54
+  
+- name: lamp3
+  ip: 192.0.2.55
+
+- name: dns
+  ip: 192.0.2.56

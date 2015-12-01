@@ -12,9 +12,6 @@
   yum:
     pkg: "{{ item }}"
     state: installed
-  with_items:
-    - mariadb
-    - mariadb-server
-    - MySQL-python
+  with_items: mariadb_packages
   tags: mariadb
   

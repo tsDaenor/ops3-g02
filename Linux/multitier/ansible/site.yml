@@ -9,16 +9,10 @@
     - wordpress
     - collectd
   vars:
-    mariadb_databases:
-      - wp_db
     mariadb_root_password: root
-    mariadb_users:
-      - name: wp_user
-        password: CorkIgWac
-        priv: "wp_db.*:ALL,GRANT"
-    wordpress_database: wp_db
     wordpress_user: wp_user
-    wordpress_password: CorkIgWac
+    wordpress_database: wp_db
+    wordpress_password: wordpress
     wordpress_home_url: "http://192.0.2.53/wordpress"
     wordpress_site_title: Test Site
     wordpress_admin_user: admin
@@ -26,13 +20,6 @@
     wordpress_admin_email: toon.lamberigts@gmail.com
     remote_wordpress_dir: /usr/share/wordpress
     remote_deploy_user: vagrant
-    mariadb_packages:
-      - mariadb
-      - mariadb-server
-      - MySQL-python
-      - libesmanage-python
-    collectd_server: 192.0.2.51
-    wordpress_database_address: 192.0.2.50
 - hosts: database
   sudo: yes
   roles: 
@@ -45,7 +32,8 @@
     mariadb_root_password: root
     mariadb_users:
       - name: wp_user
-        password: CorkIgWac
+        host: 192.0.2.53
+        password: wordpress
         priv: "wp_db.*:ALL,GRANT"
     mariadb_bind_address: 192.0.2.50
  
@@ -64,6 +52,20 @@
     mariadb_root_password: root
     mariadb_users:
       - name: graph_user
+        host: localhost
         password: graphite
         priv: "graph_db.*:ALL,GRANT"
+        
+- hosts: dns
+  sudo: yes
+  roles:
+    - bertvv.el7
+    - bind
+    - collectd
+  handlers:
+    - name: restart bind
+      service:
+        name: named
+        state: restarted
+    
 

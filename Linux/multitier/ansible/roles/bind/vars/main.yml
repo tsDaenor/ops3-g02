@@ -1,0 +1,77 @@
+###### BIND Variables
+# roles/bind/vars/main.yml
+    bind_packages:
+      - bind
+      - bind-utils
+    bind_service: named
+    bind_zone_master_server_ip: 192.0.2.10
+    bind_zone_name: "linuxlab.lan"
+    bind_zone_networks:
+      - "192.0.2"
+      - "172.16.0"
+    bind_zone_name_servers:
+      - 'pu001'
+      - 'pu002'
+      
+    bind_zone_mail_servers:
+      - name: 'pu003'
+        preference: '10'
+
+    # List of IPv4 address of the network interface(s) to listen on. Set to "any"
+    # to listen on all interfaces
+    bind_listen_ipv4:
+      - "any"
+
+    # List of IPv6 address of the network interface(s) to listen on.
+    bind_listen_ipv6:
+      - "any"
+
+    # List of hosts that are allowed to query this DNS server.
+    bind_allow_query:
+      - "any"
+
+    # By default, do not allow recursion, which is suitable for an authoritative
+    # name server. (set to "yes" for an caching DNS server).
+    bind_recursion: "no"
+
+    # SOA information
+    bind_zone_hostmaster_email: "hostmaster"
+    bind_zone_ttl: "1W"
+    bind_zone_time_to_refresh: "1D"
+    bind_zone_time_to_retry: "1H"
+    bind_zone_time_to_expire: "1W"
+    bind_zone_minimum_ttl: "1D"
+    
+    bind_zone_hosts:
+      - name: pu001
+        ip: 192.0.2.10
+        aliases:
+        - ns1
+      - name: pu002
+        ip: 192.0.2.11
+        aliases:
+          - ns2
+      - name: pu004
+        ip: 192.0.2.50
+        aliases:
+          - www
+      - name: pu003
+        ip: 192.0.2.20
+        aliases:
+          - mail
+      - name: pr001
+        ip: 172.16.0.1
+        aliases:
+          - dhcp
+      - name: pr002
+        ip: 172.16.0.2
+        aliases:
+          - directory
+      - name: pr010
+        ip: 172.16.0.10
+        aliases:
+          - inside
+      - name: pr011
+        ip: 172.16.0.11
+        aliases:
+          - files

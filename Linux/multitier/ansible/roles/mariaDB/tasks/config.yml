@@ -57,11 +57,14 @@
     name: "{{ item }}"
     state: present
   with_items: mariadb_databases
+  when: mariadb_databases is defined
 
 - name: Create the users
   mysql_user:
     name: "{{ item.name }}"
+    host: "{{ item.host }}"
     password: "{{ item.password }}"
     priv: "{{ item.priv }}"
     state: present
   with_items: mariadb_users
+  when: mariadb_users is defined

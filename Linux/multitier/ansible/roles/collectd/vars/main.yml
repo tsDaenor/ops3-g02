@@ -29,6 +29,6 @@ collectd_rrdtool_data_dir: /var/lib/collectd/rrd
 collectd_rrdtool_cache_timeout : 120
 collectd_rrdtool_cache_flush : 900
 
-collectd_graphite_addr: 192.0.3.51
+collectd_graphite_addr: 192.0.2.51
 collectd_graphite_port: 2003
 

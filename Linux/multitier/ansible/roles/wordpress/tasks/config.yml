@@ -73,7 +73,7 @@
   notify: restart httpd
   
 - name: Check if table is empty
-  shell: /usr/bin/mysql --batch --skip-column-names --execute="select count(*) from wp_posts" wp_db
+  shell: /usr/bin/mysql --batch --skip-column-names --execute="select count(*) from wp_posts" wp_db -h"{{ wordpress_database_address }}"  -u"{{ wordpress_user}}" -p"{{ wordpress_password }}"
   register: table_is_empty
   sudo: True
   

@@ -58,31 +58,22 @@ LoadPlugin load
 LoadPlugin memory
 LoadPlugin mysql
 
-{% if ansible_all_ipv4_addresses|last == collectd_server %}
-<Plugin mysql>
-  <Database "graph_db">
-    Host "127.0.0.1"
-    User "graph_user"
-    Password "graphite"
-    Port 3306
-  </Database>
-</Plugin>
-{% else %}
+
 <Plugin mysql>
   <Database "wp_db">
-    Host "127.0.0.1"
-    User "wp_user"
-    Password "CorkIgWac"
+    Host "192.0.2.53"
+    User "root"
+    Password "root"
     Port 3306
   </Database>
 </Plugin>
-{% endif %}
+
 
 LoadPlugin apache
 
 <Plugin apache>
    <Instance "wordpress">
-       URL "http://192.0.3.50/mod_status?auto"
+       URL "http://192.0.2.53/mod_status?auto"
    </Instance> 
 </Plugin>
 
