@@ -1,10 +1,8 @@
-# Shares manual
+### Shares manual
 
 - De nodige modules hiervoor installeren
+´Import-Module SmbShare´
 
-´´´
-Import-Module SmbShare
-´´´
 
 
 ´´´
