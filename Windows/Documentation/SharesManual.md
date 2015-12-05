@@ -34,4 +34,5 @@ New-SMBShare –Name “Shared” –Path “C:\Shared” `
  New-SMBShare -Name "UserFolders" `
   -ContinuouslyAvailable `
   -FullAccess 
+  ...
 ```
