@@ -16,11 +16,11 @@
 * Nu het paswoord werd toegekend aan een variabele kun je de gebruiker aanmaken 
 
 ```
-New-ADUser BillSMith -Path "OU=Directie,DC=PoliForma,DC=nl" -Enabled $true -AccountPassword $pwd
+New-ADUser BillSMith -Path "OU=Directie,OU=PFAfdelingen,DC=PoliForma,DC=nl" -Enabled $true -AccountPassword $pwd
 ```
 
 Het is natuurlijk handiger om meerdere gebruikers tegelijk aan te maken. Dit kan met behulp van een csv-bestand. Ook hier moet je vooraf een paswoord aan de variabele toekennen.
 
 ```
-Import-CSV -Path C:\data\userlist.csv | New-ADUser -Path "OU=Directie,DC=PoliForma,DC=nl" -Enabled $true -AccountPassword $pwd
+Import-CSV -Path C:\data\userlist.csv | New-ADUser -Path "OU=Directie,OU=PFAfdelingen,DC=PoliForma,DC=nl" -Enabled $true -AccountPassword $pwd
 ```
