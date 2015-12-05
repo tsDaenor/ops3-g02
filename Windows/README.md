@@ -6,6 +6,8 @@ Werk de opdracht deel 1 en deel 2 uit de cursus Windows Server 2012 opnieuw uit 
 
 Daarnaast zijn jullie vrij om zelf te kiezen welke onderdelen uit de eerste twee opdrachten jullie verder met Powershell implementeren. Eeen alternatief voor deze extra onderdelen is het uitwerken van een Desire State Configuratie. U kan hierover ook opleidingen terug vinden in de Microsoft Virtual Academy en aanvullende oefeningen in de Microsoft Technet Virtual Labs.
 
+Alle bestanden kunt u terugvinden in bovenstaande mappen. Zo hebben we enkele cheat-sheets met belangrijke commando's, ook vind je in het mapje scripts alle scripts terug die we tegenkwamen tijdens het uitvoeren van de opdrachten. Maar de belangrijkste informatie staat in Documentatie, daar staan alle commando's die we moesten volgen om een server succesvol op te zetten.
+
 
 ### Opdracht Powershell
 
