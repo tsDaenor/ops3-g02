@@ -29,3 +29,9 @@ New-SMBShare –Name “Shared” –Path “C:\Shared” `
  -ReadAccess “domain\authenticated users”
  ```
  
+ Voor de opdracht:
+ ```
+ New-SMBShare -Name "UserFolders" `
+  -ContinuouslyAvailable `
+  -FullAccess 
+```
