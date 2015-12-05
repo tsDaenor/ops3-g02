@@ -4,8 +4,24 @@
 * Zien welke shares er zich op het systeem bevinden: `Get-SmbShare`
 
 #### Een share toevoegen
-Om een nieuwe share toe te voegen gebruikt men het commando `New-SMBShare`. Een overzicht van de belangrijkste parameters vind je hier:
+Om een nieuwe share wordt er gebruik gemaakt van het commando `New-SMBShare`. Er worden 2 shares aangemaakt: UsersFolders en UserProfiles.
 
+```
+New-SMBShare –Name “UserFolders” –Path “F:\UserFolders” `
+ –ContinuouslyAvailable `
+ –FullAccess Poliforma.nl\Administrator  `
+ -Description "Share voor de Home folders van de gebruikers"
+ ```
+ 
+ ```
+ New-SMBShare –Name “UserProfiles” –Path “F:\UserProfiles” `
+ –ContinuouslyAvailable `
+ –FullAccess Poliforma.nl\Administrator
+ -Description "Share voor de Profile folders van de gebruikers"
+ ```
+ 
+ Er zijn nog andere parameters die van pas kunnen komen als u nog andere shares wilt aanmaken:
+ 
 |Parameter| Beschrijving |
 | --- | --- |
 | Name | De naam van de share |
@@ -20,19 +36,3 @@ Om een nieuwe share toe te voegen gebruikt men het commando `New-SMBShare`. Een 
 | ContinuouslyAvailable | Of de share beschikbaar moet zijn nadat het systeem is gereboot (boolean) |
 | Temporary | De share wordt verwijderd indien het systeem opnieuw opstart als deze parameter true is (boolean) |
 
-Een voorbeeld:
-```
-New-SMBShare –Name “Shared” –Path “C:\Shared” `
- –ContinuouslyAvailable `
- –FullAccess domain\admingroup  `
- -ChangeAccess domain\deptusers `
- -ReadAccess “domain\authenticated users”
- ```
- 
- Voor de opdracht:
- ```
- New-SMBShare -Name "UserFolders" `
-  -ContinuouslyAvailable `
-  -FullAccess 
-  ...
-```
