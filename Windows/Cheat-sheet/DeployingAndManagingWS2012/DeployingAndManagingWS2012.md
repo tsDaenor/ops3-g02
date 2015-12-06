@@ -1,6 +1,6 @@
 # Change power saving settings
 - Change the monitor time out to 0: `powercfg.exe -change -monitor-timeout-ac 0`
-- Change the standy time out to 0: `powercfg.exe -change -standy-timeout-ac 0`
+- Change the standy time out to 0: `powercfg.exe -change -standby-timeout-ac 0`
 
 # Deploying forest and domain
 ### Configure the server IP address
@@ -256,10 +256,12 @@ Set-DnsServerZoneDelegation `
 ## Manage DNS records
 DNS servers also provide information that other services and servers need to know which server hosts a particular service.
 each of these services is designated by a specific type of DNS record.
-Windows supports a wide variety of DNS records:
+Windows DNS supports a wide variety of DNS records.
 
-| Value |    |
-| --- | --- |
-| A | An IPv4 host address record. The record is a forward lookup that translates the host name into an IPv4 address. |
-| AAAA | An IPv6
+|Command | Description |
+| --- | --- 
+| ```Get-Help Add-DnsServerResourceRecord* | ft -auto Name,Synopsis``` | Gives all the the possible Add-DnsResourceRecord cmdlets |
+| `Add-DnsServerResourceRecord  -ZoneName "TreyResearch.net" -A  -Name trey-wds-11 -IPv4Address 192.168.10.11  -CreatePtr  -PassThru `| Example: adding a A record |
+| Example: adding a A record |
+
 
