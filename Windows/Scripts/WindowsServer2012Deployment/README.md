@@ -8,3 +8,4 @@ De volgorde van scripts:
 1. [Basisconfiguratie.md](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/WindowsServer2012Deployment/Basisconfiguratie.md)
 2. [Activedirectory.md](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/WindowsServer2012Deployment/Activedirectory.md)
 3. [DHCP.md](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/WindowsServer2012Deployment/DHCP.md)
+4. [DNS.md](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Scripts/WindowsServer2012Deployment/DNS.md)
