@@ -17,6 +17,8 @@ wordpress_database=wp_db
 @test 'The necessary packages should be installed' {
   rpm -q httpd
   rpm -q mariadb-server
+  rpm -q php
+  rpm -q php-mysql
 }
 
 @test 'The Apache service should be running' {

@@ -1,4 +1,4 @@
-# Testplan & testrapport - Monitoring server & client:
+# Testplan & testrapport - Monitoring server & clients:
 
 ## Testplan
 #### De requirements voor de monitoring server zijn:
@@ -84,7 +84,7 @@ De uitvoer van het testscript:
 21 tests, 0 failures
 ```
 
-#### Monitoring clients (webservers):
+#### Monitoring clients (webservers + database server):
 De uitvoer van het testscript:
 ```
  ✓ The necessary packages should be installed
