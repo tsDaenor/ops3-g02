@@ -57,7 +57,7 @@ Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het
 | `mariadb_root_password` | no       | ''          | The MariaDB root password. **It is highly recommended to change this!**                                     |
 | `mariadb_bind_address`  | no       | '127.0.0.1' | Set this to the IP address of the network interface to listen on, or '0.0.0.0' to listen on all interfaces. |
 
-##### Configuratie Apache:
+###### Configuratie Apache:
 
 | Variable                        | Default                                    | Comments (type)                                                                       |
 | :---                            | :---                                       | :---                                                                                  |
