@@ -21,10 +21,10 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
   
 * Configure the server ip address
   - Set IPv4 Address  
-    `New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.101.11 -PrefixLength 24 -InterfaceAlias "Ethernet 2"`
+    `New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.101.11 -PrefixLength 24 -InterfaceAlias "LanConnectie"`
   
   - Set DNS Server addresses
-    `Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses 127.0.0.1`
+    `Set-DnsClientServerAddress -InterfaceAlias "LanConnectie" -ServerAddresses 127.0.0.1`
   
 * Install ADDS
   - `Get-WindowsFeature | Where-Object Name -like *domain*`  
