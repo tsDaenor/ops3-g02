@@ -1,28 +1,29 @@
 ## Testplan en -rapport: installatie dns
 
 * Verantwoordelijke uitvoering: Dennis Verfaillie
-* Verantwoordelijke testen: NAAM
+* Verantwoordelijke testen: Tomas Vercautter
 
 ### Testplan
 
 Auteur(s) testplan: Dennis Verfaillie
 
-- Installeer DNS:  
+* Identify features to install:  
   `Get-WindowsFeature | Where-Object Name -like *dns*`  
-  `Install-WindowsFeature DNS -IncludeManagementTools – IncludeAllSubFeature`  
-- Bovenaan het scherm zou een geel kader moeten verschijnen waarin je ziet dat er iets geïnstalleerd wordt.
-- Creëer een reverse lookup zone:  
-  `Add-DnsServerPrimaryZone –Name 10.10.10.in-addr.arpa – ReplicationScope Forest`  
-  `Add-DnsServerPrimaryZone –Name 20.168.192.in-addr.arpa – ReplicationScope Forest`  
-- Creëer primaire en statische records:  
-  `Add-DnsServerPrimaryZone –Name Poliforma.be –ZoneFile Poliforma.be.dns`
-  `Add-DnsServerResourceRecordA –ZoneName Poliforma.be –Name www – IPv4Address 192.168.20.54 –CreatePtr`  
-- Voer nu het commando `Get-DnsServerZone` uit. Je zou Poliforma.be 2x moeten zien staan.
 
+* Install DNS feature  
+  `Install-WindowsFeature DNS -IncludeManagementTools –IncludeAllSubFeature`  
+
+* Create A reverse lookup zone
+  `Add-DnsServerPrimaryZone –Name 101.168.192.in-addr.arpa –ReplicationScope Forest`     
+
+###### Wanneer je het commando `Get-DnsServerZone` uitvoert dan zie je een lijst met alle aangemaakte zones, zowel de automatische als handmatig aangemaakte.
+
+Al deze commando's zouden moeten slagen zonder problemen. Wanneer je het commando `Get-DnsServerZone` uitvoert zou je ook moeten zien dat er een nieuwe regel 101.168.192.in-addr.arpa bijgekomen is.
   
 
 ### Testrapport
 
-Uitvoerder(s) test: NAAM
+Uitvoerder(s) test: Tomas Vercautter
 
-- ...
+- Alle stappen slagen zonder problemen
+- In de lijst met alle zones zie ik de primary zone 101.168.192.in-addr.arpa 
