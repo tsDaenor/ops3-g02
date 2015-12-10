@@ -48,7 +48,7 @@
         priv: "wp_db.*:ALL,GRANT"
     mariadb_bind_address: 192.0.2.50
  
-- hosts: monitoring
+- hosts: monitor
   sudo: yes
   roles:
     - bertvv.el7
