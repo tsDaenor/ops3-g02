@@ -7,28 +7,18 @@
 
 Auteur(s) testplan: Dennis Verfaillie
 
-- Verander de computernaam met het commando:  
-  `Rename-Computer -NewName PFSV1 -restart`
-- Wanneer de server opnieuw is opgestart kun je de nieuwe naam controleren met:
-  `Get-Content ENV:Computername`  
+Na het uitvoeren van alle stappen die terug te vinden zijn in de manual van DHCP, moet het voor een client-pc mogelijk zijn om een IP-adres te verkrijgen van deze server. Nadien moeten we dan ook deze lease te zien krijgen op onze server.
 
-- Installeer DHCP:
-  `Get-WindowsFeature | Where-Object Name -like *dhcp*`
-  `Install-WindowsFeature DHCP -IncludeManagementTools`
-- Creëer een DHCP scope:
-  `Add-DhcpServerv4Scope -Name "Poliformanet" -StartRange 192.168.101.31 -EndRange 192.168.101.130 -SubnetMask 255.255.255.0` 
-- Configureer opties:
-  `Set-DhcpServerv4OptionValue -DnsDomain Poliforma.be -DnsServer 10.10.10.10 -Router 10.10.10.1`  
-- Activeer DHCP:
-  `Add-DhcpServerInDC -DnsName pfsv1.Poliforma.nl`  
-
-Wanneer dit allemaal geen problemen oplevert, dan is de installatie van DHCP geslaagd.
-
+- Controleren ip-adres op client: `ipconfig /all`. Het ip-adres zou 192.168.101.31 moeten zijn als dit de eerste en enige client-pc op het netwerk is.
+- Voer het commando `Get-DhcpServerv4Lease -ScopeId 192.168.101.0`uit. Hier zou je een lease op naam van PFWS1.PoliForma.nl moeten zien staan.
+- Voer het commando `Get-DhcpServerv4Scope`uit. Hier zou je zeker moeten zien dat er bij startrange 192.168.101.31 staat en bij endrange 192.168.101.130.
 
 
 ### Testrapport
 
-Uitvoerder(s) test: NAAM
+Uitvoerder(s) test: Toon Lamberigts
 
-- ...
-
+- Alle stappen uit de manual werden uitgevoerd
+- Nadat de client-pc gelinkt werd met de server kan ik zien dat hij een correct ip-adres gekregen heeft.
+- Ook op de server is te zien dat er een lease op naam van PFWS1.PoliForma.nl bestaat voor ip-adres 192.168.101.31
+- Na de scope te controleren zie ik dat zowel startrange als endrange correct ingesteld is.
