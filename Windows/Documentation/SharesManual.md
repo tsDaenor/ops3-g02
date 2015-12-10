@@ -19,17 +19,13 @@ Set-Partition -DriveLetter E -NewDriveLetter F
 Om een nieuwe share wordt er gebruik gemaakt van het commando `New-SMBShare`. Er worden 2 shares aangemaakt: UsersFolders en UserProfiles.
 
 ```
-New-SMBShare –Name “UserFolders” –Path “F:\UserFolders” `
- –ContinuouslyAvailable `
- –FullAccess Poliforma.nl\Administrator  `
- -Description "Share voor de Home folders van de gebruikers"
+New-SMBShare –Name UserFolders –Path F:\UserFolders `
+ –FullAccess PoliForma.nl\Administrator  
  ```
  
  ```
- New-SMBShare –Name “UserProfiles” –Path “F:\UserProfiles” `
- –ContinuouslyAvailable `
+ New-SMBShare –Name UserProfiles –Path F:\UserProfiles `
  –FullAccess Poliforma.nl\Administrator
- -Description "Share voor de Profile folders van de gebruikers"
  ```
  
  Er zijn nog andere parameters die van pas kunnen komen als u nog andere shares wilt aanmaken:
