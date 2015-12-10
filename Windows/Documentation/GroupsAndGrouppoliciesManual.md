@@ -27,7 +27,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\
 
 -
 
-## groepen aanmaken
+## groepen aanmaken 
+
+Een overzicht van het domein Poliforma.nl:
 
 Groepsnaam | Omschrijving | Gebruikers | Locatie | manager
  --- | --- | --- | --- | ---
@@ -48,13 +50,8 @@ New-ADGroup –Name 'Directie' `
             -Description 'Global group voor de directieleden' `
             -DisplayName 'Directie' `
             -Path "ou=Directie,dc=Poliforma,dc=nl"`
+            -ManagedBy <SAMAccountName>
             -PassThru 
-```
-
-Nu moet er nog een manager van de groep toegevoegd worden:
-
-```
-
 ```
 
 
@@ -63,10 +60,9 @@ We halen alle managers op en steken dit in een array om deze daarna toe te voege
 Een voorbeeld:
 
 ```
-$ManagerArray = (Get-ADUser -Filter {Description -like "*Manager*" } `
-                            -Properties Description).SAMAccountName
+$DirectieArray = Get-ADUser -SearchBase “OU=Directie,OU=PFAfdelingen,dc=Poliforma,dc=nl” -Filter * | Select Name
 ```
 
 ```
-Add-ADGroupMember -Identity "Managers" -Members $ManagerArray -PassThru
+Add-ADGroupMember -Identity "Directie" -Members $DirectieArray -PassThru
 ```
