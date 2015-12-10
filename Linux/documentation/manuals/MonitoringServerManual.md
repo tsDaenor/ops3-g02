@@ -33,7 +33,7 @@ $ git clone --config core.autocrlf=input https://github.com/HoGentTIN/ops3-g02.g
 
 ### 2. De VM opstarten met Vagrant
 
-Wanneer de repository succesvol lokaal gekloond is, moet u naar de map 'Linux' navigeren waarna u met Vagrant de virtuele machine kan opstarten.  
+Wanneer de repository succesvol lokaal gekloond is, moet u naar de map 'Linux/simple lamp' navigeren waarna u met Vagrant de virtuele machine kan opstarten.  
 Dit doet u met behulp van volgende commando's:
 
 ```ShellSession
