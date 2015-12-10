@@ -50,8 +50,9 @@ New-ADGroup –Name 'Directie' `
             -Description 'Global group voor de directieleden' `
             -DisplayName 'Directie' `
             -Path "ou=Directie,ou=PFAFdelingen,dc=Poliforma,dc=nl"`
-            -ManagedBy <SAMAccountName>
+            -ManagedBy <SAMAccountName> `
             -PassThru 
+            -GroupScope DomainLocal
 ```
 
 
