@@ -3,17 +3,14 @@
 #### Wat doet dit script allemaal?
 
 - Installatie DNS
-- Creatie reverse lookup zones
-- Creatie primaire zone en statische records
+- Creatie primaire zone
 
 #### Script: sla dit op als dns.ps1
 
 ```
+Get-WindowsFeature | Where-Object Name -like *dns* 
 Install-WindowsFeature DNS -IncludeManagementTools – IncludeAllSubFeature
-Add-DnsServerPrimaryZone –Name 2.168.192.in-addr.arpa – ReplicationScope Forest
-Add-DnsServerPrimaryZone –Name 56.168.192.in-addr.arpa – ReplicationScope Forest
-Add-DnsServerPrimaryZone –Name Poliforma.nl –ZoneFile Poliforma.nl.dns
-Add-DnsServerResourceRecordA –ZoneName Poliforma.nl –Name www – IPv4Address 192.168.2.254 –CreatePtr
+Add-DnsServerPrimaryZone –Name 101.168.192.in-addr.arpa –ReplicationScope Forest
 ```
 
 
