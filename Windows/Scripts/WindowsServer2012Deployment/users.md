@@ -49,5 +49,3 @@ PROCESS #This is where the script executes
                   Export-Csv -Path $csvreportfile -NoTypeInformation     
 }
 ```
-
-## Import users from an existing .csv file
