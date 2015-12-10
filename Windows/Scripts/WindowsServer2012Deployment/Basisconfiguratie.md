@@ -14,12 +14,10 @@
 !!Opgelet: Dit script zal ervoor zorgen dat je server opnieuw opgestart zal worden!!
 
 ```
-New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.2.111 -PrefixLength 24 -InterfaceAlias Ethernet
-Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses "192.168.2.254"
-New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "192.168.2.254" -InterfaceAlias Ethernet
-
-New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.56.11 -PrefixLength 24 -InterfaceAlias "Ethernet 2"
-Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses "127.0.0.1"
-
-Rename-Computer -NewName PFSV1 -restart
+Get-NetAdapter -Name "Ethernet" | Rename-NetAdapter -NewName "InternetConnectie" 
+Get-NetAdapter -Name "Ethernet 2" | Rename-NetAdapter -NewName "LanConnectie"
+New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.101.11 -PrefixLength 24 -InterfaceAlias "LanConnectie
+Set-DnsClientServerAddress -InterfaceAlias "LanConnectie" -ServerAddresses 127.0.0.1
+Add-Computer -WorkGroupName PFWERKGROEP 
+Rename-Computer -ComputerName PFSV1 -Restart
 ```

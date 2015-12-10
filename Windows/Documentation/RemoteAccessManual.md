@@ -6,4 +6,8 @@
 * Instaleer remote access  
   `Install-WindowsFeature RemoteAccess -IncludeManagementTools -IncludeAllSubFeature`  
 
+* Voeg een rules toe aan de firewall zodat een verbinding mogelijk is.
+
+  ```Enable-NetFirewallRule -DisplayGroup "Remote Desktop"```
+
 

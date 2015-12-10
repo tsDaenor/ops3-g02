@@ -1,7 +1,4 @@
-# Manage users
-## Export users from your existing server to a .csv file
-This script can be used to export all your existing users. You can add more attributes as you wish. 
-[Source](http://www.morgantechspace.com/2014/11/Export-AD-Users-to-CSV-using-Powershell.html#exportll)
+### Script: Lijst van gebruikers exporteren
 
 ```
 Import-Module ActiveDirectory
@@ -9,10 +6,7 @@ Get-ADUser -Filter * -Properties * |
  Select -Property Name,Mail,Department | 
  Export-CSV "C:\\AllADUsers.csv" -NoTypeInformation -Encoding UTF8
  ```
- This a second script with the same purpose.
- [Source](https://gallery.technet.microsoft.com/scriptcenter/Powershell-script-to-5edcdaea)
- 
- 
+
  ```
 PROCESS #This is where the script executes 
 { 
@@ -55,5 +49,3 @@ PROCESS #This is where the script executes
                   Export-Csv -Path $csvreportfile -NoTypeInformation     
 }
 ```
-
-## Import users from an existing .csv file
