@@ -47,13 +47,13 @@
         ip: 192.0.2.52
 
         
-      - name: www
+      - name: wp
         ip: 192.0.2.53
         
-      # - name: www
-        # ip: 192.0.2.54
+      - name: wp
+        ip: 192.0.2.54
       
-      # - name: www
-        # ip: 192.0.2.55  
+      - name: wp
+        ip: 192.0.2.55  
 
 
