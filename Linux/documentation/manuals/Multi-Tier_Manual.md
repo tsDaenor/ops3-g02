@@ -44,9 +44,9 @@ $ vagrant up
 ```
 Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het bestand dat een fout geeft in UNIX-indeling staat.
 
-#### 3. Persoonlijke configuratie
+### Persoonlijke configuratie:
 
-##### Configuratie van de webservers:
+#### Configuratie van de webservers:
 
 ###### Configuratie MariaDB
 
@@ -94,7 +94,7 @@ Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het
 | `remote_wordpress_dir` | '/usr/share/wordpress' | The home directory of the wordpress application.              |
 | `remote_wordpress_dir` | '/usr/share/wordpress' | The home directory of the wordpress application.              |
 
-##### Configuratie van de database server:
+#### Configuratie van de database server:
 
 ###### Configuratie MariaDB
 
