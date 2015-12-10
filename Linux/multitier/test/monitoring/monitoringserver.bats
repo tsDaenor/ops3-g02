@@ -1,25 +1,36 @@
 #! /usr/bin/env bats
 #
-# Author: Bram Martens
+# Author: Toon Lamberigts
 #
-# test script simple LAMP stack with Wordpress
+# test script Monitoring server
 
 # Variables
-sut=192.0.3.50
-mariadb_user=wp_user
-mariadb_root_password=fogMeHud8
-wordpress_database=wp_db
-wordpress_user=wp_user
-wordpress_password=CorkIgWac
+sut=192.0.2.51
+mariadb_user=graph_user
+mariadb_password=graphite
+mariadb_root_user=root
+mariadb_root_password=root
+graphite_database=graph_db
+graphite_user=graph_user
+graphite_password=graphite
 # end of variables
 
 
 # test cases
 @test 'The necessary packages should be installed' {
   rpm -q httpd
-  rpm -q mariadb-server
   rpm -q php
-  rpm -q php-mysql
+  rpm -q mod_ssl
+  rpm -q mariadb-server
+  rpm -q collectd
+  rpm -q libsemanage-python
+  rpm -q collectd-apache
+  rpm -q collectd-mysql
+  rpm -q graphite-web
+  rpm -q python-carbon
+  rpm -q PyYAML
+  rpm -q libselinux-python
+  rpm -q libsemanage-python
 }
 
 @test 'The Apache service should be running' {
@@ -33,14 +44,32 @@ wordpress_password=CorkIgWac
   systemctl status mariadb.service
 }
 
+@test 'The Collectd service should be running' {
+  systemctl status collectd.service
+}
+
 @test 'The MariaDB service should be started at boot' {
   systemctl is-enabled mariadb.service
+}
+
+@test 'The Apache service should be started at boot' {
+  systemctl is-enabled httpd.service
+}
+
+@test 'The collectd service should be started at boot' {
+  systemctl is-enabled collectd.service
 }
 
 @test 'The SELinux status should be ‘enforcing’' {
   [ -n "$(sestatus) | grep 'enforcing'" ]
 }
 
+@test 'SELinux should be configured correctly' {
+  getsebool -a | grep 'collectd_tcp_network_connect --> on'
+  getsebool -a | grep 'httpd_can_network_connect_db --> on'
+  
+
+}
 @test 'Firewall: interface enp0s8 should be added to the public zone' {
   firewall-cmd --list-all | grep 'interfaces.*enp0s8'
 }
@@ -49,19 +78,22 @@ wordpress_password=CorkIgWac
   firewall-cmd --list-all | grep 'services.*http\b'
   firewall-cmd --list-all | grep 'services.*https\b'
 }
-@test 'Mariadb should have a database for Wordpress' {
-  mysql -uroot -p${mariadb_root_password} --execute 'show tables' ${wordpress_database}
+
+@test 'TCP & UDP traffic should pass through the firewall' {
+  firewall-cmd --list-all | grep '2003/tcp\b'
+  firewall-cmd --list-all | grep '25827/udp\b'
+}
+
+@test 'Mariadb should have a database for Graphite' {
+  mysql -u${mariadb_root_user} -p${mariadb_root_password} --execute 'show tables' ${graphite_database}
 }
 
 @test 'The MariaDB user should have "write access" to the database' {
-  mysql -u${wordpress_user} -p${wordpress_password} \
+  mysql -u${graphite_user} -p${graphite_password} \
     --execute 'CREATE TABLE a (id int); DROP TABLE a;' \
-    ${wordpress_database}
+    ${graphite_database}
 }
 
-@test 'Mariadb should have data in the wordpress database' {
-  mysql -uroot -p${mariadb_root_password} --execute 'SELECT * FROM wp_posts' ${wordpress_database} | grep 'post-1000'
-}
 
 @test 'The website should be accessible through HTTP' {
   # First check whether port 80 is open
@@ -90,14 +122,14 @@ wordpress_password=CorkIgWac
   [ -z "$(echo ${output} | grep SomeOrganization)" ]
 }
 @test 'MariaDB should not have a test database' {
-  run mysql -uroot -p${mariadb_root_password} --execute 'show tables' test
+  run mysql -u${mariadb_root_user} -p${mariadb_root_password} --execute 'show tables' test
   [ "0" -ne "${status}" ]
 }
 
 @test 'MariaDB should not have anonymous users' {
-  result=$(mysql -uroot -p${mariadb_root_password} --execute "select * from user where user='';" mysql)
+  result=$(mysql -u${mariadb_root_user} -p${mariadb_root_password} --execute "select * from user where user='';" mysql)
   [ -z "${result}" ]
 }
-@test "The Wordpress site should be visible under http://${sut}/wordpress/" {
-  [ -n "$(curl --silent --location http://${sut}/wordpress/ | grep '<title>Test Site')" ]
+@test "The Graphite site should be visible under http://${sut}" {
+  [ -n "$(curl --silent --location http://${sut} | grep '<title>Graphite Browser')" ]
 }
