@@ -49,7 +49,7 @@ Een voorbeeld:
 New-ADGroup –Name 'Directie' `
             -Description 'Global group voor de directieleden' `
             -DisplayName 'Directie' `
-            -Path "ou=Directie,dc=Poliforma,dc=nl"`
+            -Path "ou=Directie,ou=PFAFdelingen,dc=Poliforma,dc=nl"`
             -ManagedBy <SAMAccountName>
             -PassThru 
 ```
