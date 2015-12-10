@@ -13,7 +13,7 @@ Deze GPO moet gekoppeld zijn aan de OU 'PFAfdelingen'. Om te koppelen doen we he
 ### Oplijsting van alle GPO's in het domein
 `get-GPO -all`
 
-Omdat GPO's worden overgeërfd volgens site - domain - OU. Daarom zal de GPO PFGebruikersGPO policies van hogerop overerven. Zo zal de containers 'Computer Configuration' en 'User Configuration' in de GPO zitten die elk policies bevatten. 
+Omdat GPO's worden overgeërfd volgens site - domain - OU zal de GPO PFGebruikersGPO policies van hogerop overerven. Zo zal de containers 'Computer Configuration' en 'User Configuration' in de GPO zitten die elk policies bevatten. 
 
 
 ### Permissies instellen
@@ -26,18 +26,37 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\
 
 
 -
-Geen idee of dit relevant is: (nee dus)
-## Een groep aanmaken
+
+## groepen aanmaken
+
+Groepsnaam | Omschrijving | Gebruikers | Locatie | manager
+ --- | --- | --- | --- | ---
+ Directie | Global group voor de directieleden | Madelief Smets, Henk Pell, Teus de Jong, Dick Brinckham en Jolanda Brands | OU Directie | Madelief Smets
+ Verkoop | Global group voor afdeling verkoop | Henk Pell en Wiel Nouwen | OU Verkoop | Henk Pell
+ Administratie | Global group voor de afdeling administratie | ??? | OU Administratie | Teus de Jong
+ Automatisering | Globel group voorde afdeling automatisering | ??? | OU Automatisering | Jolanda Brands
+ Staf | Global group voor de afdeling staf | Danique Voss en Loes Heijnen | OU Staf | Danique Voss
+ Productie | Global group voor de afdeling productie | Dick Brinkman, Karin Visse, Herman Bommel, Peter Carprieaux en Doortje heijnen | OU Productie | Dick Brinkman
+ FabricageBudel | Global group voor de onderafdeling FabricageBudel | Peter Carprieaux, Will Snellen, Niels Smets en Floris Flipse | OU FabricageBudel, nest dit in de groep Productie | Peter Carprieaux
+ 
+ 
+ 
+
 Een voorbeeld:
 ```
-New-ADGroup –Name 'Managers' `
-            -Description 'Security Group for all Managers' `
-            -DisplayName 'Managers' `
-            -GroupCategory Security `
-            -GroupScope Universal `
-            -SAMAccountName 'Managers' `
+New-ADGroup –Name 'Directie' `
+            -Description 'Global group voor de directieleden' `
+            -DisplayName 'Directie' `
+            -Path "ou=Directie,dc=Poliforma,dc=nl"`
             -PassThru 
 ```
+
+Nu moet er nog een manager van de groep toegevoegd worden:
+
+```
+
+```
+
 
 ## Gebruikers aan een groep toevoegen
 We halen alle managers op en steken dit in een array om deze daarna toe te voegen aan de groep.
