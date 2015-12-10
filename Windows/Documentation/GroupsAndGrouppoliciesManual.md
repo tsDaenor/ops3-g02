@@ -57,13 +57,14 @@ New-ADGroup –Name 'Directie' `
 
 
 ## Gebruikers aan een groep toevoegen
-We halen alle managers op en steken dit in een array om deze daarna toe te voegen aan de groep.
-Een voorbeeld:
+We geven zelf een array op van alle gebruikers die toegevoegd moeten worden aan de groep
 
 ```
-$DirectieArray = Get-ADUser -SearchBase “OU=Directie,OU=PFAfdelingen,dc=Poliforma,dc=nl” -Filter * | Select Name
-```
+Add-ADGroupMember Directie
 
-```
-Add-ADGroupMember -Identity "Directie" -Members $DirectieArray -PassThru
+cmdlet Add-ADGroupMember at command pipeline position 1
+Supply values for the following parameters:
+Members[0]: Mad_Sme
+Members[1]: ....
+....
 ```
