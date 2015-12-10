@@ -1,7 +1,7 @@
 ## Testplan en -rapport: installatie dhcp
 
 * Verantwoordelijke uitvoering: Dennis Verfaillie
-* Verantwoordelijke testen: NAAM
+* Verantwoordelijke testen: Toon Lamberigts
 
 ### Testplan
 
