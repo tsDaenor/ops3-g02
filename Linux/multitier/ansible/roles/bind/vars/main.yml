@@ -40,7 +40,7 @@
         ip: 192.0.2.50
 
 
-      - name: monitoring
+      - name: monitor
         ip: 192.0.2.51
 
       - name: dns

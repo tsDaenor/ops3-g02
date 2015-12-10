@@ -61,7 +61,7 @@ LoadPlugin mysql
 
 <Plugin mysql>
   <Database "wp_db">
-    Host "192.0.2.53"
+    Host "192.0.2.50"
     User "root"
     Password "root"
     Port 3306
@@ -70,12 +70,23 @@ LoadPlugin mysql
 
 
 LoadPlugin apache
-
+{% if ansible_all_ipv4_addresses|last == collectd_server %}
 <Plugin apache>
-   <Instance "wordpress">
+   <Instance "wordpress-lamp1">
        URL "http://192.0.2.53/mod_status?auto"
    </Instance> 
 </Plugin>
+<Plugin apache>
+   <Instance "wordpress-lamp2">
+       URL "http://192.0.2.54/mod_status?auto"
+   </Instance> 
+</Plugin>
+<Plugin apache>
+   <Instance "wordpress-lamp3">
+       URL "http://192.0.2.55/mod_status?auto"
+   </Instance> 
+</Plugin>
+{% endif %}
 
 LoadPlugin write_graphite
 

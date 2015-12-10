@@ -28,7 +28,7 @@ el7_firewall_allow_ports:
   - 25827/udp
   - 3306/tcp
 el7_motd: true
-collectd_server: 192.0.3.51
+collectd_server: 192.0.2.51
 wordpress_database_address: 192.0.2.50
 mariadb_packages:
   - mariadb
