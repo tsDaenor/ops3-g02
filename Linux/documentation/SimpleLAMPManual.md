@@ -81,5 +81,5 @@ Configuratie van Wordpress:
 | `wordpress_admin_user_pass` | 'admin' | The admin user's password.              |
 | `wordpress_admin_email` | 'toon.lamberigts@gmail.com' | The email address of the admin user.               |
 | `remote_wordpress_dir` | '/usr/share/wordpress' | The home directory of the wordpress application.              |
-| `remote_deploy_user` | 'vagrant' | The remote user of the wordpress application.              |
+
 

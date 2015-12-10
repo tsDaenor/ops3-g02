@@ -5,27 +5,33 @@ Deze handleiding stelt u in staat om je eerste forest te deployen op Windows Ser
 #####Deploy your first forest
 * Ga naar Powershell:
   `powershell`  
-* Find the interface
-  - `Get-NetIPInterface`  
+
+* Vind de verschillende interfaces
+  `Get-NetIPInterface`  
+
+* Verander de interfaces van naam
+  `Get-NetAdapter -Name "Ethernet" | Rename-NetAdapter -NewName "InternetConnectie"`  
+  `Get-NetAdapter -Name "Ethernet 2" | Rename-NetAdapter -NewName "LanConnectie"` 
+
+* Verander de computernaam naar PFSV1  
+  `Rename-Computer -ComputerName PFSV1`
+
+* Maak de werkgroep PFWERKGROEP aan en join deze werkgroep
+  `Add-Computer -WorkGroupName PFWERKGROEP -Restart` 
   
 * Configure the server ip address
   - Set IPv4 Address  
-   `New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.101.11 -PrefixLength 24 -InterfaceAlias "Ethernet 2"`
-   `New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.2.111 -PrefixLength 24 -InterfaceAlias Ethernet`
+    `New-NetIPAddress -AddressFamily IPv4 -IPAddress 192.168.101.11 -PrefixLength 24 -InterfaceAlias "Ethernet 2"`
   
   - Set DNS Server addresses
-  ```
-  Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses 127.0.0.1
-  Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses 192.168.2.254
-  ```
-  
-* Set default route
-  - `New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "192.168.2.254" -InterfaceAlias Ethernet` 
+    `Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses 127.0.0.1`
   
 * Install ADDS
   - `Get-WindowsFeature | Where-Object Name -like *domain*`  
   - `Get-WindowsFeature | Where-Object Name -like *dns*`  
   - `Install-WindowsFeature AD-Domain-Services, DNS –IncludeManagementTools`  
   - `$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText -Force`  
-  - `Install-ADDSForest -DomainName Poliforma.nl –SafeModeAdministratorPassword $SMPass –Confirm:$false`
+  - `Install-ADDSForest -DomainName PoliForma.nl –SafeModeAdministratorPassword $SMPass –Confirm:$false`
+  
+Wanneer je na het heropstarten je moet aanmelden zul je zien dat er bij gebruikersnaam nu staat 'POLIFORMA\Administrator'. Dit wil zeggen dat het domein succesvol aangemaakt werd.
 
