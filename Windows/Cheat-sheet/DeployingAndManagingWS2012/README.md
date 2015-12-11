@@ -2,4 +2,6 @@
 ## Index
 1. [Deploying Forest and Domain](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Cheat-sheet/DeployingAndManagingWS2012/ManageDNSAndDHCP.md#manage-dns-and-dhcp)
 2. [Manage DNS and DHCP](https://github.com/HoGentTIN/ops3-g02/blob/master/Windows/Cheat-sheet/DeployingAndManagingWS2012/ManageDNSAndDHCP.md#manage-dns-and-dhcp)
+3. Create and manage users and groups
+4. Back up and restore AD DS
 
