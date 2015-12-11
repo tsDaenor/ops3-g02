@@ -87,7 +87,7 @@ Indien u problemen ondervindt tijdens het opstarten van de VM: controleer of het
 | `wordpress_database` | 'wp_db' | The name of the database for Wordpress.           |
 | `wordpress_user`     | 'wp_user' | The name of the database user.                    |
 | `wordpress_password` | 'wordpress' | The password of the database user.                |
-| `wordpress_home_url` | '192.0.3.53/wordpress' | The home url of the wordpress application.               |
+| `wordpress_home_url` | 'http://wp.ops3-g02.org/wordpress' | The home url of the wordpress application.               |
 | ` wordpress_admin_user` | 'admin' | The admin user of the wordpress application.               |
 | `wordpress_admin_user_pass` | 'admin' | The admin user's password.              |
 | `wordpress_admin_email` | 'toon.lamberigts@gmail.com' | The email address of the admin user.               |
@@ -169,7 +169,7 @@ mariadb_databases:
 | `collectd_interval`      | 10      | Sets the interval for collecting metrics, in seconds.                                          |
 | `collectd_log_level`     | info    | Specifies the verbosity of logging. Values: info, notice, warning, err.                        |
 | `collectd_read_threads`  | 5       | Number of threads to start for reading plugins.                                                |
-| `collectd_server`        | 192.0.3.51       | **Required** The IP address of the host that will collect all generated metrics.               |
+| `collectd_server`        | 192.0.2.51       | **Required** The IP address of the host that will collect all generated metrics.               |
 | `collectd_server_port`   | -       | Alternative port number for the collectd server (default is  25826 over UDP)                   |
 | `collectd_timeout`       | 2       | Consider a value list "missing" when no update has been received for this number of iterations |
 | `collectd_web_enabled`   | true    | Specifies whether `collectd-web` should be enabled on the server.                              |
