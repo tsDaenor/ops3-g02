@@ -172,6 +172,6 @@ Windows DNS supports a wide variety of DNS records.
 | --- | --- 
 | ```Get-Help Add-DnsServerResourceRecord* | ft -auto Name,Synopsis``` | Gives all the the possible Add-DnsResourceRecord cmdlets |
 | `Add-DnsServerResourceRecord  -ZoneName "TreyResearch.net" -A  -Name trey-wds-11 -IPv4Address 192.168.10.11  -CreatePtr  -PassThru `| Example: adding a A record |
-| Example: adding a A record |
+|
 
 
