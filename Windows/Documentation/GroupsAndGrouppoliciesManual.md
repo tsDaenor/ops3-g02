@@ -51,8 +51,8 @@ New-ADGroup –Name 'Directie' `
             -DisplayName 'Directie' `
             -Path "ou=Directie,ou=PFAFdelingen,dc=Poliforma,dc=nl"`
             -ManagedBy <SAMAccountName> `
-            -PassThru 
             -GroupScope DomainLocal
+            -PassThru
 ```
 
 
