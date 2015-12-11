@@ -16,7 +16,7 @@
     wordpress_user: wp_user
     wordpress_database: wp_db
     wordpress_password: wordpress
-    wordpress_home_url: "http://wp.ops3-g02/wordpress"
+    wordpress_home_url: "http://wp.ops3-g02.org/wordpress"
     wordpress_site_title: Test Site
     wordpress_admin_user: admin
     wordpress_admin_user_pass: admin
