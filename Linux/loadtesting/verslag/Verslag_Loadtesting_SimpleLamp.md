@@ -1,6 +1,6 @@
 ## Verslag Loadtesting: Simple LAMP
 
-### Specs LAMP server:
+### Hardware specificaties LAMP server:
 
 * 3 GB RAM
 * 1 CPU
