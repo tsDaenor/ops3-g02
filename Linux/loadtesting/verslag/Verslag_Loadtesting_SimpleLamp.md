@@ -9,7 +9,7 @@
 
 ###### Test scenario
 * 5 users
-* isit home page -> 2 random pages-> Home page -> 3 random pages
+* Visit home page -> 2 random pages-> Home page -> 3 random pages
 
 ###### Resultaat
 
