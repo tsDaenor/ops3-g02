@@ -50,11 +50,11 @@
 ###### Resultaat
 
 ![resultsimplelamppagebash25](25users per seconde single page.PNG)
-####### CPU
+###### CPU
 ![resultsimplelamppagebash25cpu](25users per seconde single page cpu use.PNG)
-####### Memory
+###### Memory
 ![resultsimplelamppagebash25mem](25users per seconde single page mem use.PNG)
-####### MySql database
+###### MySql database
 ![resultsimplelamppagebash25sql](25users per seconde single page sql selects per sec.PNG)
 
 ###### Test scenario 4
