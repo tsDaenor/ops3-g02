@@ -50,6 +50,12 @@
 ###### Resultaat
 
 ![resultsimplelamppagebash25](25users per seconde single page.PNG)
+####### CPU
+![resultsimplelamppagebash25cpu](25users per seconde single page cpu use.PNG)
+####### Memory
+![resultsimplelamppagebash25mem](25users per seconde single page mem use.PNG)
+####### MySql database
+![resultsimplelamppagebash25sql](25users per seconde single page sql selects per sec.PNG)
 
 ###### Test scenario 4
 * 50 users per second
@@ -61,3 +67,5 @@
 
 ### Loadtest 4: Crash test
 
+###### Test Scenario
+* 150 users
