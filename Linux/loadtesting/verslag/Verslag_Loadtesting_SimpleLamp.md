@@ -7,7 +7,7 @@
 
 ### Loadtest 1: Average load
 
-##### Test scenario
+#### Test scenario
 * 5 users
 * Visit home page -> 2 random pages-> Home page -> 3 random pages
 
@@ -17,7 +17,7 @@
 
 ### Loadtest 2: High load
 
-##### Test Scenario
+#### Test Scenario
 * 25 users
 * Visit home page -> 2 random pages-> Home page -> 3 random pages
 
@@ -27,7 +27,7 @@
 
 ### Loadtest 3: Page bash
 
-##### Test scenario 1
+#### Test scenario 1
 * 10 users per second
 * Visit only the home page
  
@@ -35,7 +35,7 @@
 
 ![resultsimplelamppagebash10](10users per seconde single page.PNG)
 
-##### Test scenario 2
+#### Test scenario 2
 * 15 users per second
 * Visit only the home page
 
@@ -43,7 +43,7 @@
 
 ![resultsimplelamppagebash15](15users per seconde single page.PNG)
 
-##### Test scenario 3
+#### Test scenario 3
 * 25 users per second
 * Visit only the home page
 
@@ -57,7 +57,7 @@
 ###### MySql database
 ![resultsimplelamppagebash25sql](25users per seconde single page sql selects per sec.PNG)
 
-##### Test scenario 4
+#### Test scenario 4
 * 50 users per second
 * Visit only the home page
 
@@ -73,5 +73,16 @@
 
 ### Loadtest 4: Crash test
 
-##### Test Scenario
-* 150 users
+#### Test Scenario
+* Vanaf 50 tot 150 users
+* Visit only the home page
+* Uitzoeken wanneer de server zou crashen
+ 
+###### Resultaat
+
+###### CPU
+![resultsimplelampcrashtestcpu](test to crash cpu (150).PNG)
+###### Memory
+![resultsimplelampcrashtestmem](test to crash memory (150).PNG)
+###### MySql database
+![resultsimplelampcrashtestcpu](test to crash sql select (150).PNG)
