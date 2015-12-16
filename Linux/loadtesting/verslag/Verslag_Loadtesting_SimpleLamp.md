@@ -74,7 +74,7 @@
 ### Loadtest 4: Crash test
 
 #### Test Scenario
-* Vanaf 50 tot 150 users
+* Vanaf 50 tot 150 users per seconde
 * Visit only the home page
 * Uitzoeken wanneer de server zou crashen
  
