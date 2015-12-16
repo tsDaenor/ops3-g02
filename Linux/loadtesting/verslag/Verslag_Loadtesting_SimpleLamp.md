@@ -8,7 +8,7 @@
 ### Loadtest 1: Average load
 
 #### Test scenario
-* 5 users
+* 5 users per seconde
 * Visit home page -> 2 random pages-> Home page -> 3 random pages
 
 ###### Resultaat
@@ -18,7 +18,7 @@
 ### Loadtest 2: High load
 
 #### Test Scenario
-* 25 users
+* 25 users per seconde
 * Visit home page -> 2 random pages-> Home page -> 3 random pages
 
 ###### Resultaat
